@@ -13,8 +13,8 @@ effectively even over 56K dialup of the time. How did they do it? Simple,
 they cut the frame-rate to 15fps, set the audio at 96KHz MP3, and squished
 the holy shit out of the movies. They looked fine on a 320x240 NTSC TV
 though, didn't they? Ahh, who cares. The "secret sauce" TMD .vcf file for 
-making some of your own TMD MovieZ in TMPGEnc. Multiple versions of the
-originally free TMPENC are here as well as lots of other ancient codecs
+making some of your own TMD MovieZ in TMPGEnc is here. Multiple versions of 
+the originally free TMPENC are here as well as lots of other ancient codecs
 and goodies.
 
 I CLAIM NO RESPONSIBLITY FOR ANY OF THESE FILES, I just don't want them lost
