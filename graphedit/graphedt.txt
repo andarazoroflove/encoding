@@ -1,0 +1,32 @@
+GraphEdit build 011008
+
+Changes from SDK 8.0a to 8.1
+
+
+BRIEFLY
+=======
+
+- GraphEdit has been revised for 8.1 to improve its user interface and to
+  correct problems with zoom levels.
+
+
+DETAILED
+========
+
+Revised GraphEdit application
+
+The GraphEdit utility benefits from several improvements, particularly 
+with respect to its user interface, menus, and toolbar.  Additionally,
+
+- Graph resizing code (View->xxx %) handles all sizes correctly, and 
+  you can resize your graphs using the menu, keyboard +/- keys, and 
+  Ctrl+MouseWheel.  
+
+- You can optionally disable the seek bar (and its timed updates), which 
+  has been known to cause difficulty when debugging filters with GraphEdit.  
+
+- To preserve screen real estate, source and file writer filters displayed 
+  in GraphEdit will now only display their corresponding filenames as the 
+  filter name, instead of displaying the fully qualified path name.  
+  For example, a file source for the file 
+  "C:\DXSDK\samples\Multimedia\Media\lake.mpg" would display "lake.mpg".

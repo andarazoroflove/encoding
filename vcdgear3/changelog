@@ -1,0 +1,38 @@
+v3.55 final
+-experimental 3 digits in index file
+-progress bar popup for samples only shown on vcdgear tab (fixes crash)
+
+
+v3.54
+-more GUI cosmetic glitches fixed in Task creation form
+-Decompress and Delete RAR option failed after the first 2 tasks
+-Moved Delete RAR as subcomponent of Decompress
+-Multiple RAR decompress support
+
+
+v3.53
+-out time displayed not correct in sample editor
+-clear sample selection did not move slider back properly
+-version number.. left at 3.50 grr :-)
+-temp vpj's deleted when vcdgear is closed
+
+
+v3.52
+-rar->mpg dynamic folder support.
+-fixed crash when adding sample to task
+-individual samples can be created and saved to task now (v2.1 task files now)
+-sample editor can be run separately
+-sample [cancel] reverts back to original settings like it should
+-edited sample can be viewed now without clicking on No/Yes
+-add mpeg track detects if valid mpeg file first
+-separate menu selection for "external" run programs
+-other bugs
+-progress bar popup for sample generation
+
+
+v3.51
+-preliminary cosmetic fixes to Task screen
+-improved fix routine by a notch
+-able to add a sample clip and put images/sample into separate folder anytime
+
+

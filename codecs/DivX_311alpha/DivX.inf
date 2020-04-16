@@ -1,0 +1,131 @@
+; DivX ;-) MPEG-4 Video Codec install
+; Version 3.1alpha
+; NT & 9x (2k tested !)
+; by Gej
+
+
+[Version]
+Signature = "$CHICAGO$"
+Class = MEDIA
+
+[SourceDisksNames]
+1="DivX ;-) MPEG-4 Video Codec Install Disk",, 0001
+
+[SourceDisksFiles]
+DivXa32.acm=1
+DivXc32.dll=1
+DivXc32f.dll=1
+DivX_c32.ax=1
+DivX.inf=1
+
+[Installable.Drivers]
+div3 = 1:DivXc32.dll, "vidc.div3", "DivX ;-) MPEG-4 (Low-Motion)" , , ,
+div4 = 1:DivXc32f.dll, "vidc.div4", "DivX ;-) MPEG-4 (Fast-Motion)" , , ,
+divxa32 = 1:DivXa32.acm, "msacm.divxa32" , "DivX ;-) Audio Codec" , , , 
+l3acm = 1:L3codeca.acm, "msacm.l3acm", "Fraunhofer IIS MPEG Layer-3 Codec (Professional)" , , ,
+
+[DefaultInstall]
+CopyFiles=MPEG4.Copy,MP3.Copy,MPEG4.Copy.Inf
+Updateinis = MPEG4.Updateini
+addreg = MPEG4.AddReg,MPEG4.AddReg9x,MPEG4.DoReg
+MediaType = SOFTWARE
+
+[DefaultInstall.ntx86]
+CopyFiles=MPEG4.Copy,MP3.Copy,MPEG4.Copy.Inf
+addreg = MPEG4.AddReg,MPEG4.AddRegNT,MPEG4.DoReg
+MediaType = SOFTWARE
+
+[Remove_DivX]
+AddReg = MPEG4.Unregister
+DelReg = MPEG4.DelReg
+DelFiles = MPEG4.Copy,MPEG4.Copy.Inf
+UpdateInis = MPEG4.DelIni
+
+[MPEG4.Copy]
+DivX_c32.ax
+DivXc32.dll
+DivXc32f.dll
+DivXa32.acm
+
+[MP3.Copy]
+l3codeca.acm
+
+[MPEG4.Copy.Inf]
+DivX.inf
+
+[MPEG4.UpdateIni]
+system.ini, drivers32,,"vidc.DIV3=DivXc32.dll"
+system.ini, drivers32,,"vidc.DIV4=DivXc32f.dll"
+system.ini, drivers32,,"msacm.divxa32=DivXa32.acm"
+system.ini, drivers32,,"msacm.l3acm=L3codeca.acm"
+
+[MPEG4.DelIni]
+system.ini, drivers32,"vidc.DIV3=DivXc32.dll",
+system.ini, drivers32,"vidc.DIV4=DivXc32f.dll",
+system.ini, drivers32,"msacm.divxa32=DivXa32.acm"
+
+[MPEG4.AddReg]
+
+[MPEG4.AddReg9x]
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\icm\vidc.DIV3,Description,,%DivXLow%
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\icm\vidc.DIV3,Driver,,DivXc32.dll
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\icm\vidc.DIV3,FriendlyName,,%DivXLow%
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\icm\vidc.DIV4,Description,,%DivXFast%
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\icm\vidc.DIV4,Driver,,DivXc32f.dll
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\icm\vidc.DIV4,FriendlyName,,%DivXFast%
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\acm\msacm.divxa32,Description,,%DivXAudio%
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\acm\msacm.divxa32,Driver,,DivXa32.acm
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\acm\msacm.divxa32,FriendlyName,,%DivXAudio%
+
+HKLM,%UnInstallPath%,DisplayName,,%UninstallDispName%
+HKLM,%UnInstallPath%,UninstallString,,"%10%\rundll.exe setupx.dll,InstallHinfSection Remove_DivX 132 %17%\%InfFile%"
+
+[MPEG4.AddRegNT]
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc,DivXc32.dll,,%DivXLow%
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc,DivXc32f.dll,,%DivXFast%
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc,DivXa32.acm,,%DivXAudio%
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc,L3codeca.acm,,"Fraunhofer IIS MPEG Layer-3 Codec (Pro)"
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers32,vidc.DIV3,,DivXc32.dll
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers32,vidc.DIV4,,DivXc32f.dll
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers32,msacm.divxa32,,DivXa32.acm
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers32,msacm.l3acm,,L3codeca.acm
+
+HKLM,%UnInstallPath%,DisplayName,,%UninstallDispName%
+HKLM,%UnInstallPath%,UninstallString,,"%11%\rundll32.exe setupapi,InstallHinfSection Remove_DivX 132 %17%\%InfFile%"
+
+[MPEG4.DoReg]
+HKLM,Software\Microsoft\Windows\CurrentVersion\RunOnce\Setup,"Registering DivX Direct Show Decoder...",,"%11%\regsvr32.exe /s %11%\DivX_c32.ax"
+
+[MPEG4.DelReg]
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\icm\vidc.DIV1
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\icm\vidc.DIV2
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\icm\vidc.DIV3
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\icm\vidc.DIV4
+HKLM,SYSTEM\CurrentControlSet\Control\MediaResources\acm\msacm.divxa32
+
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc,DivXc32.dll,,""
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc,DivXc32f.dll,,""
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc,DivXa32.acm,,""
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers32,vidc.DIV3,,""
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers32,vidc.DIV4,,""
+HKLM,SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers32,msacm.divxa32,,""
+HKLM,%UnInstallPath%
+
+[MPEG4.Unregister]
+HKLM,Software\Microsoft\Windows\CurrentVersion\RunOnce\Setup,"Unregistering DivX Direct Show Decoder...",,"%11%\regsvr32.exe /s /u %11%\DivX_c32.ax"
+
+[DestinationDirs]
+DefaultDestDir = 11	; LDID_SYS
+MPEG4.Copy = 11
+MPEG4.Copy.Inf = 17
+
+[Strings]
+DivXAudio="DivX ;-) Audio Codec"
+DivXLow="DivX ;-) MPEG-4 Video Codec (Low-Motion)"
+DivXFast="DivX ;-) MPEG-4 Video Codec (Fast-Motion)"
+InfFile="DivX.inf"
+UninstallDispName="DivX Codec 3.1alpha release"
+UnInstallPath="Software\Microsoft\Windows\CurrentVersion\Uninstall\DIVXCodec"
+MediaClassName="Media Devices"
+mfgname="No more money !"
+

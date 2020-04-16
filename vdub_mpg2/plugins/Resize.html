@@ -1,0 +1,201 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+<html>
+<head>
+<title>Smart Resize</title>
+</head>
+<body><font face=verdana>
+<center><h2>Smart Resize<br><small>(Version 1.0)</small></h2></center>
+<small>[Place this text file in the VirtualDub plugins directory to
+make it available via the Help button on the filter configuration
+dialog box. The computer must have an HTML browser, such as Internet
+Explorer or Netscape,
+available in its search path.]</small>
+<p>
+VirtualDub's internal resize filter has a very powerful and fast resampling
+engine, but its user interface is primitive. For example, there is no way to
+scale the picture by a percentage; you have to hand calculate and enter both
+the new width and new height. The Smart Resize filter duplicates the internal
+resize functionality while greatly enhancing the user interface. The basic idea
+is that a size calculator is added to the filter's dialog box. When enabled, the
+configuration calculated is exported back into the main filter
+parameters, which work the same as the internal filter's parameters. Smart Resize
+supports adjustment of the aspect ratio, several scaling and fitting
+modes, and "snapping" to required pixel multiples for the output height
+and/or width. Batch processing is supported so that if the processing parameters are
+saved with the size calculator enabled, the filter will dynamically calculate the
+main filter settings based on the parameters of the input clips encountered while
+processing the batch files. They need not be
+calculated manually in advance.
+<p>
+This help file will first describe the calculator "pipeline". You'll need to understand this to
+properly use the filter. Then the configuration options will be described.
+Finally some usage examples will be presented.
+<h3>The Calculator Pipeline</h3>
+If a clip is loaded into VirtualDub and the Smart Resize filter is added, the
+<i>Input width</i> and <i>Input height</i> boxes in the <i>Size Calculator</i> will
+show the dimensions of the frame arriving at the filter. These two values are
+the input to a pipeline of calculations, as depicted below:
+<p>
+--> Aspect ratio adjust --> Fitting/scaling --> Snapping --> 
+<p>
+When the calculator is enabled by checking the <i>Enable</i> checkbox,
+the output values from the pipeline are calculated and transferred to the
+main filter configuration and the preview (if any) is refreshed. Any changes to
+the calculator settings cause an automatic recalculation and update of the main
+filter parameters. Let us now consider the three stages of the pipeline.
+<p>
+<b><i>Aspect ratio adjust</i></b>&nbsp;&nbsp;This stage allows for conversion of the aspect ratio. For example, you might have a source clip from DV that has an aspect ratio of
+10/9 (pixel width/pixel height)
+and you want to convert it to a 1/1 aspect ratio for display on the PC
+monitor. This stage works as follows. The source aspect ratio is SW/SH. The
+desired aspect ratio is DW/DH. The <i>Input width</i> value is now scaled as
+follows:
+<p>
+<i>Input width'</i> = <i>Input width</i> * (DW * SH) / (DH * SW)
+<p>
+The <i>Input height</i> is not changed. For example, in the DV case described
+above the source aspect ratio is 10/9 and the desired aspect ratio is
+1/1. The adjustment factor is thus 9/10 and these are the values loaded into
+the <i>Aspect ratio adjust</i> edit boxes. 
+(If you prefer to simply view these boxes as permitting a horizontal scaling,
+and then use them that way, that is fine! But the formula above tells you
+how to determine the desired scaling to convert between aspect ratios.)
+<p>
+<b><i>Fitting/Scaling</i></b>&nbsp;&nbsp;This stage takes the values from the
+previous stage and scales them according to the selected mode. For example, if
+the <i>Percent</i> mode is selected and 50 entered, the width and height will both be
+reduced to 50% of their incoming values. Refer to the description of the configuration options
+for details on the available modes.
+<p>
+<b><i>Snapping</i></b>&nbsp;&nbsp;Often we require that the output width and/or
+height are exact multiples of some number of pixels. For example, many MPEG
+encoders require the width to be a multiple of 4 pixels. The snapping controls
+allow this to be done automatically. Note that if both the width and height are
+snapped, it might occur that to satisfy this, either the aspect ratio must be
+changed slightly, or the borders of the frame must be padded. The controls allow
+for selecting the desired treatment in these cases.
+Refer to the description of the configuration options for details on the available modes.
+<h3>The Configuration Options</h3>
+<b><i>Enable</i></b>&nbsp;&nbsp;When this checkbox is checked, the size calculator
+is enabled. The main filter parameters are automatically calculated and their values updated,
+but their controls are disabled. To use the filter in batch mode, save the processing settings
+with <i>Enable</i> checked.
+<p>
+<b><i>Aspect ratio adjust</i></b>&nbsp;&nbsp;Using the edit boxes, enter the scaling fraction
+by which the width is to be scaled (the height is left as is).
+For example, use 2/1 to double the width. Note that in order to avoid crashing VirtualDub or
+Windows, the aspect ratio cannot be set higher than 10/1 or lower than 1/10. Sometimes you might want to enter a ratio using high numbers, such as 720/640. The constraint just mentioned would not permit this as the edit boxes can only be typed one at a time. However, the constraint is not enforced if the <i>Enable</i> box is not checked. When the <i>Enable</i> box is subsequently checked the constraint is
+tested and if it is violated, the
+aspect ratio is reset to 1/1. Thus, you can enter high numbers by first
+unchecking the <i>Enable</i> box.
+<p>
+<b><i>Fit width</i></b>&nbsp;&nbsp;When this mode is selected, the picture will
+be scaled (maintaining the aspect ratio) so that the width is made equal to the
+specified value. 
+<p>
+<b><i>Fit height</i></b>&nbsp;&nbsp;When this mode is selected, the picture will
+be scaled (maintaining the aspect ratio) so that the height is made equal to the
+specified value.
+<p>
+<b><i>Fit width and height</i></b>&nbsp;&nbsp;When this mode is selected, the picture will
+be scaled (maintaining the aspect ratio) so that the width and height both best fit into the
+frame size defined by the values in the <i>Fit width</i> and <i>Fit height</i> edit boxes.  
+<p>
+<b><i>Fit width and height w/letterbox</i></b>&nbsp;&nbsp;When this mode is selected, the picture will
+be scaled (maintaining the aspect ratio) so that the width and height both best fit into the
+frame size defined by the values in the <i>Fit width</i> and <i>Fit height</i> edit boxes,
+and either the width or height will be expanded and letterboxed so that the resulting frame
+is exactly the size defined by the edit boxes. See the <b><i>Examples</i></b> section for
+a typical application. Note that because the output frame size is directly defined by the
+edit boxes, snapping is not necessary and the snapping controls are disabled in this
+fitting mode.  
+<p>
+<b><i>Percent</i></b>&nbsp;&nbsp;When this mode is selected, the picture will
+be scaled (maintaining the aspect ratio) by the specified percentage value. Do not enter excessively large values that create giant bitmaps or you may crash VirtualDub or Windows. 
+<p>
+<b><i>No enlarge</i></b>&nbsp;&nbsp;This mode applies to all modes except the <i>Percent</i> mode.
+When this mode is selected in <i>Fit width</i> mode,
+the picture will not be enlarged if its width is already equal to or
+less than the specified fit width value. When this mode is selected in <i>Fit
+height</i> mode, the picture will not be enlarged if its height is already equal to or
+less than the specified fit height value.
+When this mode is selected in <i>Fit width and
+height</i> or <i>Fit width and height w/letterbox</i> modes,
+the picture will not be enlarged if the width and height are already
+equal to or less than the specified frame size. This option makes sense only in batch mode.
+For example, you might be processing a directory full of clips and you want to ensure that
+all the clips do not exceed a bounding box, but you don't want any that are already within
+the bounding box to be enlarged.
+<p>
+<b><i>No reduce</i></b>&nbsp;&nbsp;This mode applies to all modes except the <i>Percent</i> mode.
+When this mode is selected in <i>Fit width</i> mode,
+the picture will not be reduced if its width is already equal to or
+greater than the specified fit width value. When this mode is selected in <i>Fit
+height</i> mode, the picture will not be reduced if its height is already equal to or
+greater than the specified fit height value.
+When this mode is selected in <i>Fit width and
+height</i> or <i>Fit width and height w/letterbox</i> modes,
+the picture will not be enlarged if the width and height are already
+equal to or greater than the specified frame size.
+<p>
+<b><i>Fix width to mult of</i></b>&nbsp;&nbsp;This mode will cause the output
+width to be snapped to a multiple of the specified number of pixels.
+<p>
+<b><i>Fix height to mult of</i></b>&nbsp;&nbsp;This mode will cause the output
+height to be snapped to a multiple of the specified number of pixels.
+<p>
+<b><i>Up/Down/Nearest</i></b>&nbsp;&nbsp;This mode determines how to change the
+dimension when a snap is done. Use <i>Up</i> to round up. Use <i>Down</i> to round down. Use
+<i>Nearest</i> to round to the nearest multiple. Note that when both the width and the
+height are snapped, and the padding mode is not set to <i>Adjust AR</i>, only the
+rounding up mode is available (because the resize engine can only pad; it cannot
+crop).
+<p> 
+<b><i>Pad width/Pad height/Adjust AR</i></b>&nbsp;&nbsp;These modes are active only
+when both the width and the height are snapped. These modes determine what
+to do if the two snaps cannot both be honored without padding or changing the
+aspect ratio. Use the <i>Adjust AR</i> mode to allow the calculator to change
+the aspect ratio in order to avoid padding. Use the <i>Pad width</i> mode to
+allow the calculator to letterbox the picture by padding the two sides. Use the
+<i>Pad height</i> mode to
+allow the calculator to letterbox the picture by padding the top and bottom.
+If padding is applied, it will be reflected in the <i>Frame width</i>
+and <i>Frame
+height</i> boxes in the main filter parameters.
+<h3>Examples</h3>
+<b><i>Example 1</i></b>&nbsp;&nbsp;Suppose the user wants to try different
+picture sizes while ensuring a width that is a multiple of 4. The clip is first loaded and
+then the filter added. The preview can be enabled. Then the <i>Percent</i> mode
+is selected and <i>Fit width to mult of</i> is selected and set to 4. The
+desired percentage is entered.
+<p>
+<b><i>Example 2</i></b>&nbsp;&nbsp;Suppose the user wants to convert a DV clip
+at a 10/9 pixel aspect ratio for viewing on a PC's 1/1 monitor, and ensure an output width that
+is a multiple of 16 pixels (to make encoder happy). The clip is loaded and the
+filter added. The <i>Aspect ratio
+adjust</i> is set to 9/10. The <i>Fix width to mult of</i> mode is selected and its
+value set to 16.
+<p>
+<b><i>Example 3</i></b>&nbsp;&nbsp;Suppose the user has a clip that is 512x398,
+cropped from a 640x480 picture. The user wants to make a 480x480 Video CD. So he
+must set the <i>Aspect ratio adjust</i> to 3/4 (because the Video CD requires a
+1/1 aspect ratio). He sets the fit mode to <i>Fit width and height w/letterbox</i>,
+and he sets the <i>Fit width</i> and <i>Fit height</i> values to 480. 
+<h3>Thanks and Credits</h3>
+The original internal resize filter from which Smart Resize was adapted was
+created by Avery Lee, the author of VirtualDub. The performance and speed of his
+resize engine is truly awesome. Gunnar Thalin implemented a stand-alone video
+calculator. Jon C. Hodgson inspired me to create Smart Resize and assisted
+during the development process.
+<p>
+For additional information, version updates, and other filters, please go to the following web site:
+<p>
+Filters for VirtualDub<br>
+<a href=http://sauron.mordor.net/dgraft/index.html>
+http://sauron.mordor.net/dgraft/index.html</a>
+<p>
+Donald Graft<br>
+August 17, 2001<br>
+(C) Copyright 2001, All Rights Reserved
+</body>
+</html>

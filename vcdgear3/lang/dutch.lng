@@ -1,0 +1,436 @@
+#VCDGEAR_LANGUAGE_FILE
+
+// ** All language files for VCDGear have #VCDGEAR_LANGUAGE_FILE as the first
+// line.  This line should never be removed. **
+//
+// The format for the language file consists of sections represented by lines
+// containing a '#' as the first character, followed by the section name.
+// All section must end with 'END_' as the prefix of the section name.
+// VCDGear will read in and use the contents of each section.
+//
+// Some things to note:
+//
+//      Notice that some text are in upper/lowercase.  Try to preserve
+//      the case style when translating (if possible).
+//
+//      For the component sections, try to keep the text within the
+//      size of (for example) a button.
+//
+//      The section names are pre-defined and you cannot add your own.
+//      If you accidentally delete a section, blank areas will appear
+//      when you run VCDGear :)
+//
+//      VCDGear ignores lines that begin with '//'.  These can be used for
+//      adding in comments.  Likewise, VCDGear will ignore empty lines.
+//
+//      If you notice an error in a language file, please contact the
+//      author (if they put their e-mail address in the comments section)
+//      to correct it.
+//
+//
+//
+
+
+// Fill in information about your language set.
+// This will be visible in the Options/Language section of VCDGear.
+
+#LANGUAGE_SET_INFO
+    // language id
+    Nederlands - Dutch
+
+    // language set version
+    3.50.1 - 01-01-2003
+
+    // who created the language set?
+    MACKerMD
+
+    // comments about your language set?
+    #LANGUAGE_SET_COMMENTS
+        // fill in whatever you want the user to know
+        // about your language file here.  Things you
+        // might like to include: misc info about
+        // your language file, your email address in
+        // case a user wants to notify you of problems,
+        // etc...
+        ------------------------------------------------------------------------------------
+                -----==[ Nederlandse taalmodule voor VCDGear ]==-----
+        ------------------------------------------------------------------------------------
+        Het programma voor al uw (Super-)VideoCD doeleinden:
+        - Maak (Super-)VideoCD images van MPEG bestanden.
+        - Zet oude CD-i discs om naar VideoCD standaard.
+        - Filter MPEG bestanden uit diverse ISO formaten.
+        - Repareer foutieve MPEG bestanden.
+        - Repareer foutieve (Super-)VideoCDs / CD-i discs.
+        - Archiveer (Super-)VideoCD images in RAR bestanden.
+        - SFV Checksum toevoeging-/controleermogelijkheid.
+        - Batch verwerking van aangemaakte taken.
+        - Meervoudige images m.b.v. 1 groot MPEG bestand.
+        ------------------------------------------------------------------------------------
+        -=[~~~~~ ... VCDGear - de toekomst is nu. ~~~~~]=-
+        ------------------------------------------------------------------------------------
+        
+    #END_LANGUAGE_SET_COMMENTS
+#END_LANGUAGE_SET_INFO
+
+//////////////////////////////////////////////////////////////////////////
+// Core program messages
+//////////////////////////////////////////////////////////////////////////
+#CORE_PROGRAM_MSGS
+
+Selecteer Binair Image Bestand
+Alle tracks geselecteerd
+Door gebruiker geselecteerde tracks
+verwerking geannuleerd
+zoeken
+schrijven
+initiale sequence correctie toegevoegd
+verwerking afgebroken
+VCD bestandsstructuur gereed
+MPEG block correctie(s) aangebracht
+MPEG-2 extractie modus
+programma prioriteit
+slapend
+laagst
+laag
+normaal
+hoog
+hoogst
+extreem
+proces methode
+pre-scannen
+CD-i MPEG sequence
+Geen CD-i MPEG sequence gevonden
+Verwerkte Track
+uur
+minuten
+seconden
+klaar
+actief
+Uitvoer bestand bestaat reeds.  Overschrijven?
+succes
+mislukt
+overgeslagen
+bezig
+MPEG bestand(en) split(s) gemaakt
+Ja
+Nee
+Gedetecteerde sector grootte
+Ja op alles
+Nee op alles
+Blocks padded
+Stel lees grootte in op
+Stel schrijf grootte in op
+Gevonden XA header.  Auto-omschakeling naar lees[2352]/schrijf[2324]
+Geen CRC data voor dit bestand
+Bestand toegevoegd
+Genereren van SAMPLE...
+Zet Multi-File uitvoer naamgeving naar
+Uw meerdere uitvoer bestanden zullen er alsvolgt uitzien
+Uw images zullen een volume label dragen dat er alsvolgt zal uitzien
+
+#END_CORE_PROGRAM_MSGS
+
+
+//////////////////////////////////////////////////////////////////////////
+// Component messages - text on buttons, fields, etc...
+//////////////////////////////////////////////////////////////////////////
+#COMPONENT_MSGS
+
+start
+stop
+Resolutie
+Video Bitrate
+Klaar
+Repareer MPEG Errors
+Verwijder CD-i MPEG Bumper
+Forceer Sector Lees Grootte
+Forceer Sector Schrijf Grootte
+Toast Uitvoer (MAC)
+Voeg track toe
+Verwijder track
+maak lijst leeg
+maak leeg
+laden
+Voeg samen
+Voeg Track 0 bij
+Volume Naam
+
+Extractie / Conversie
+Track Lijst
+VideoCD Creatie Methode
+Video Track Informatie
+VideoCD Track Lijst
+Extra Opties
+Opties
+
+Uitschakelen MPEG Header correctie
+Uitschakelen foutmeldingen
+Uitschakelen audio beep bij waarschuwingen
+Volledige path aanduiding in CUE index bestand
+Prioriteit
+Uninstalleer
+OK
+Annuleer
+opslaan
+
+Taak
+Taak Type
+Status
+Fout Hantering
+Parameters
+
+toevoegen taak
+verwijder taak
+Archiveer Opties
+Volume grootte
+Compressie
+
+Bij Foutmeldingen
+Bij Meldingen
+Laad een taak project
+Uitpakken uit RAR archief
+Verwijder RAR archief na uitpakken
+Voer user commando regel uit
+Stop batch proces
+Hervat batch proces
+Altijd standaard JA
+Altijd standaard NEE
+Taak Project Bestand
+Archief Naam
+Uitpak Directory
+Extern Commando Regel
+selecteer
+RAR Uitpakker
+Uitpak Parameters
+Taal Informatie
+Taal
+Versie
+Vertaling door
+Algemeen
+Folders
+Voeg CD-i Applicatie toe
+Niet Aangegeven
+Commentaar
+Tijdelijke Directory
+
+//////////////////////////////
+// Menu separator character //
+// DO NOT CHANGE!!!         //
+-
+//////////////////////////////
+
+documentatie
+opties
+info
+Toevoegen aan RAR archief met...
+Uitschakelen MPEG bestand opdeling
+Inpak Parameters
+Geselecteerde Bestand(en)
+geselecteerde bestand(en)
+Sla bestand(en) op gemaakt met vorige taak
+
+Batch Lijst
+Open/Toevoegen lijst
+Opslaan Lijst
+Maak lijst leeg
+Toevoegen
+Verwijder
+
+geen
+Activeer passief lezen/schrijven
+Gebruik vorige taak uitvoer als invoerbestand
+Eigenschappen
+
+Reparaties
+Opdelingen
+Weergave
+Doorstaan
+Waarschuwing
+Fout
+Weergave doorstaan kleur bij minder dan
+Weergave waarschuwings-kleur bij minder dan
+Padding
+Uitschakelen MPEG padding
+Audio
+Audio Bitrate
+Genereer Philips compatible SVCD
+kopieer
+Taal Directory
+Handleiding/FAQ Directory
+Bron
+Speelduur
+VideoCD opties
+
+Verifieer SFV bestand met...
+Genereer SFV bestand van...
+Aktie
+Van / Met
+SFV Checksum bestand
+Track Pauze
+Deel VideoCD Images Op Bij
+Niet opdelen
+Plaats Images/Sample In Aparte Folders?
+Image #
+Totale Speelduur
+Selecteer uitpak directory
+Bestandsnaam
+In
+Uit
+? willekeurig
+set
+Start Positie
+Sample Lengte
+Huidige Tijds Code
+Sample Speelduur
+Geselecteerde In/Out Tijden
+RAR Basis Naam
+Verwijder images na archivering?
+Maak RARs in CD1/CD2/.../ folders
+multi-file benaming
+Voeg SFV toe aan RAR bestand(en)
+RARs te Maken In CD1/CD2/.../ Folders
+Uninstalleer VCDGear
+Meerdere Bestands Benaming
+Geef bestandsnaam stijl aan die U voor meerdere uitvoer bestanden wilt gebruiken.                      Gebruik %d om het bestandsnummer aan te duiden, %02d duidt het bestandsnummer tweecijferig aan.     Voorbeelden:                                                       TITEL_%02d --> TITEL_01.* TITEL_02.* ..  IMAGE_D%d --> IMAGE_D1.* IMAGE_D2.* ..
+Geef volumenaam stijl aan die U wilt gebruiken.      Gebruik %d om het imagenummer aan te duiden waar %02d het imagenummer tweecijferig aanduidt. Voorbeelden:                                                             TITEL_%02d --> TITEL_01, TITEL_02, ..               VOLUME_D%d --> VOLUME_D1, VOLUME_D2, ..
+Preview video
+Voeg een Sample Clip toe?
+Gebruik MPEG2 directory (default)
+Gebruik MPEGAV directory
+Gebruik ENTRYVCD identificatie (default)
+Gebruik ENTRYSVD identificatie
+SFV Controleer Archief Eerst
+
+#END_COMPONENT_MSGS
+
+
+//////////////////////////////////////////////////////////////////////////
+// Hint messages - text that appears when mouse hovers over a button
+//                 or component for a small period of time
+//////////////////////////////////////////////////////////////////////////
+#HINT_MSGS
+Selecteer extractie/conversie methode
+Repareer MPEG fouten tijdens verwerking
+Verwijder de CD-i bumper van het bron bestand
+Selecteer een specifieke sector lees grootte
+Selecteer een specifieke sector schrijf grootte
+Genereer Toast compatible MPEG uitvoer
+Zet dit aan om tracks samen te voegen
+Zet dit aan om Track 0 aan de Track Lijst toe te voegen
+Laad bron bestand
+Klik hier om de verwerking te starten
+
+Selecteer methode om een VCD image op te bouwen
+Voeg een video track toe aan de Track Lijst
+Verwijder een track van de Track Lijst
+Verplaats track omhoog in de Track Lijst
+Verplaats track omlaag in de Track Lijst
+Leeg de Track Lijst
+Verplaats taak naar batch processor lijst
+Klik hier om de verwerking te stoppen
+
+Ververk invoer bestand maar schrijf geen uitvoer bestand
+Sta taak toe een invoer bestand uit vorig batch proces te gebruiken
+Klik hier om de log te wissen
+Kopieer log naar clipboard
+Klik om de uitvoer te previewen.
+Pauze tijd tussen trackovergang.  Standaard is 5 seconden
+Deelt de VideoCD image op als de totale lengte van alle tracks de 74/80 minuten grens overschrijden
+Plaatst elke VideoCD image in een aparte directory (vb. CD1, CD2..)
+Maak alles op huidige pagina schoon
+Verplaats slider naar start positie en druk op de Set knop
+Verplaats slider naar eind positie en druk op de OK knop
+
+#END_HINT_MSGS
+
+
+//////////////////////////////////////////////////////////////////////////
+// Document menu
+//////////////////////////////////////////////////////////////////////////
+#DOCUMENT_MENU_MSGS
+Wat is er nieuw?
+VCDGear historie
+Handleiding
+FAQ
+#END_DOCUMENT_MENU_MSGS
+
+
+//////////////////////////////////////////////////////////////////////////
+// Task menu
+//////////////////////////////////////////////////////////////////////////
+#TASK_MENU_MSGS
+Open taak project
+Opslaan taak project
+Open batch lijst
+#END_TASK_MENU_MSGS
+
+
+//////////////////////////////////////////////////////////////////////////
+// Error messages
+//////////////////////////////////////////////////////////////////////////
+#ERROR_MSGS
+Verandering van directory is niet mogelijk.
+Binaire image bestand gespecificeerd in .CUE bestand kan niet worden geopend.
+Totale tracks boven 99.  Mogelijke fout in .CUE bestand.
+Fout in .CUE bestand!  Niet vindbare BESTANDs informatie.
+MODE-1 MPEG filtering wordt niet ondersteunt.
+CUE bestand is incompleet en mist noodzakelijke track informatie.
+Bron bestand kon niet worden geopend of benaderd.
+Kon geen MPEG stream vinden.
+Kon geen SEQUENCE HEADER vinden.
+Kan geen uitvoer bestand maken.
+Kan geen AVSEQ/MUSIC MPEG tracks vinden.
+Ongeldige MPEG pack grootte.
+Kan geen MPEG-2 stream vinden.
+Track komt niet overeen met de grootte uit het CUE bestand.  Track zal worden afgebroken.
+Kan geen resource bestand maken.
+Ongeldig project bestand.
+RAR decompressor is nog niet geselecteerd.
+Ongeldige batch lijst.
+Kan geen RAR bestand vinden.
+Er zijn geen bestanden aangemaakt uit vorige taak!
+Mag niet bovem de 99 video tracks.
+Ongeldige taal bestand.
+Fout bij uitlezen taal module.  Incorrecte hoeveelheid invoeringen.
+Kan CD-i Applicatie bestanden niet openen. Controleer uw configuratie.
+Kan image sector grootte niet bepalen. Gebruik Forceer Lees optie.
+Kan geen SCANDATA.DAT/SEARCH.DAT tabel bestand aanmaken.
+Bestand is geen MPEG-1.  MPEG-1 is nodig voor VCD.
+Bestand is geen MPEG-2.  MPEG-2 is nodig voor SVCD.
+Geheugen adresserings fout.
+Kan bestand niet vinden.
+Bestandsnaam mag niet leeg zijn!
+
+#END_ERROR_MSGS
+
+
+//////////////////////////////////////////////////////////////////////////
+// Warning messages
+//////////////////////////////////////////////////////////////////////////
+#WARNING_MSGS
+
+// Note: the 'pack' below does not refer to 'compress'.  The meaning of
+//       'pack' is equivalent to 'a sector'
+WAARSCHUWING: Corruptie kan optreden bij niet-geldige pakket-grootte MPEGs
+
+WAARSCHUWING: Gespecificeerd DAT bestand heeft een ongeldige DAT signatuur.
+WAARSCHUWING: Missend einde van Dreamcast commentaar signatuur.
+WAARSCHUWING: DAT bestand kan al een MPEG bestand zijn.  Probeer de naam te wijzigen.
+WAARSCHUWING: MPEG bestand kan een niet constante 2324 pack grootte bevatten.
+
+
+#END_WARNING_MSGS
+
+
+//////////////////////////////////////////////////////////////////////////
+// Query messages
+//////////////////////////////////////////////////////////////////////////
+#QUERY_MSGS
+Er kan te weinig ruimte zijn om het uitvoer-bestand te kunnen wegschrijven. Doorgaan?
+Alle huidige track-gegevens zullen verloren raken.  Doorgaan?
+Overschijf bestaand bestand?
+Verwijder VCDGear gegevens uit de registry?
+#END_QUERY_MSGS
+
+
+#END_VCDGEAR_LANGUAGE_FILE

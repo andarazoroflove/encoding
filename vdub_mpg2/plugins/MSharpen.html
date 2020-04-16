@@ -1,0 +1,60 @@
+<html>
+<title>MSharpen Plugin for VirtualDub</title>
+<body><font face=verdana>
+<center><h1>MSharpen Plugin for VirtualDub<br>(Version 1.0)</h1>
+<h3>by Donald A. Graft</h3></center>
+<small>[Place this text file in the VirtualDub plugins directory to
+make it available via the Help button on the filter configuration
+dialog box. The computer must have an HTML browser, such as Internet
+Explorer or Netscape,
+available in its search path.]</small>
+
+<h4>Introduction</h4>
+This plugin for VirtualDub implements an unusual concept
+in spatial sharpening. Although designed specifically for anime,
+it also works quite well on normal video. The filter is very effective
+at sharpening important edges without amplifying noise.
+<p>
+This filter is not yet optimized for speed. Optimizations will be included
+in a future version.
+<p>
+The justification for the filter is simple. The biggest complaint about
+Unsharp Mask (for example) is that setting the strength high enough
+to sharpen important edges also amplifyies noise and small detail.
+MSharpen solves this problem effectively by detecting important edge areas
+and then applying sharpening only to those areas.
+You first set the 'threshold' parameter so that desired edges
+are selected. Then you
+set the sharpening strength. You can set very high sharpening strengths
+without amplifying noise or fine detail
+(because the edge map is used to mask the sharpening).
+<p>
+There is an important caveat about the use of this filter. It works best on
+frames obtained from progressive source material, such as films and anime.
+Although it can be used on deinterlaced video, if the deinterlacing is poor
+or applied weakly, this filter can emphasize the residual combing, because it
+sharpens the important edges; these edges are where the most combing occurs!
+So be aware of this. All filters have their domains of application, and it would be
+a mistake to think of any filter as a panacea.
+<p><hr><h4>MSharpen Configuration Options</h4>
+<p>
+<b><i>Strength</i></b>: This is the strength of the sharpening
+to be applied to the edge detail areas. It is applied
+only to the edge detail areas as determined by the 'Threshold' option. Strength 255
+is the strongest sharpening.
+<p>
+<b><i>Threshold</i></b>: This parameter determines what is
+detected as edge detail and thus sharpened. To see what edge detail areas will be
+sharpened, use the 'Show sharpened areas' option.
+<p>
+<b><i>Show sharpened areas</i></b>: When checked, the areas to be sharpened are
+shown in white against a black background. Use this to set the level of
+detail to be sharpened. This function also makes a basic edge detection filter.
+<p><hr><p>
+Copyright (C) 2002, Donald A. Graft, All Rights Reserved.<br>
+Feedback/inquiries to neuron2@attbi.com.
+<p>
+For updates and other filters/tools, visit my web site:<br>
+<a href=http://shelob.mordor.net/dgraft/>http://shelob.mordor.net/dgraft/</a>
+</body>
+</html>

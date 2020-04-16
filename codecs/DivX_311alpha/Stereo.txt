@@ -1,0 +1,20 @@
+Q : What's the difference between the various stereo modes?
+A : It's important to understand the difference between Stereo and Joint Stereo.
+    'Joint Stereo' modes take advantage of the similarities between the L+R
+    channels. This allows more bits to be used in other areas and in many cases
+    this can give an overall gain in encoding quality. Almost all encoders use
+    joint stereo when encoding at 128 kbits.
+
+    Joint stereo has 2 submodes called IS and MS. 'Joint Stereo IS' destroys
+    phase information and shouldnt be used for high-quality encoding.
+    'Joint Stereo MS' means Middle/Side and is OK for use in most encoding.
+
+    However, for some audio, Joint Stereo MS may create a 'flanging' or
+    'swishing' effect. In these cases it's better to use 'Stereo mode'. This
+    mode creates 2 independent channels for both left and right. When stereo
+    mode is used, you should also use a higher bitrate (160 or 192 kbits) -
+    Stereo mode will allocate about half of this bitrate for each channel.
+
+    In summary, for most audio, Joint Stereo MS at 128 or 160 kbits should be
+    fine. If your audio is especially 'wide' and creates flange you should use
+    'Stereo' mode. You can change these modes in the Radium codec control panel.

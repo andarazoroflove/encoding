@@ -1,0 +1,89 @@
+diff -ruN toolame-02i/Makefile.MSVC toolame-02i_win32/Makefile.MSVC
+--- toolame-02i/Makefile.MSVC	Thu Jan  1 03:00:00 1970
++++ toolame-02i_win32/Makefile.MSVC	Wed Aug  1 03:22:02 2001
+@@ -0,0 +1,58 @@
++#run from command prompt 'nmake -f Makefile.MSVC'                              #
++################################################################################
++PGM = tooLAME
++
++#intel compiler 
++CC = icl
++# MSVC
++#CC=cl
++LN = link
++
++CC_OPTS = /nologo /DNDEBUG /Qip /W2 /Wport /YX /GA /O2 /Gs1024 \
++          /Qunroll /Qsox- /QIfdiv /QI0f /QaxiMK $(CC_OPTS)
++
++LN_OPTS = /nologo
++
++
++
++CC_SWITCHES = $(CC_OPTS) /DVBR /DIOFIX \
++              /DBS_FORMAT=BINARY
++
++LN_SWITCHES = $(LN_OPTS)
++
++
++c_sources = \
++	common.c \
++	encode.c \
++	formatBitstream.c \
++	ieeefloat.c \
++	toolame.c \
++	portableio.c \
++	psycho_II.c \
++	fft.c \
++	subband.c \
++	get_audio.c \
++	mem.c \
++	crc.c \
++	tables.c \
++	availbits.c \
++	bitstream.c \
++	psycho_I.c
++
++
++
++OBJ = $(c_sources:.c=.obj)
++
++.c.obj:
++ @$(CC) $(CC_SWITCHES) /c $< /Fo$@
++
++$(PGM).exe: $(OBJ) Makefile.MSVC
++ @echo $(PGM).exe
++ @$(LN) $(LN_SWITCHES) $(OBJ) \
++   /out:$(PGM).exe /map:$(PGM).map
++
++
++clean:
++	@-del *.exe
++	@-del icl.pch
++	@-del *.obj
+\ No newline at end of file
+diff -ruN toolame-02i/bitstream.c toolame-02i_win32/bitstream.c
+--- toolame-02i/bitstream.c	Sat Jul 14 04:22:20 2001
++++ toolame-02i_win32/bitstream.c	Wed Aug  1 03:33:18 2001
+@@ -1,3 +1,9 @@
++#ifndef inline
++# define inline
++#endif
++
++#define INLINE inline
++
+ #include <stdlib.h>
+ #include "common.h"
+ 
+diff -ruN toolame-02i/psycho_I.c toolame-02i_win32/psycho_I.c
+--- toolame-02i/psycho_I.c	Sat Jul 14 04:22:20 2001
++++ toolame-02i_win32/psycho_I.c	Wed Aug  1 03:33:38 2001
+@@ -1,3 +1,9 @@
++#ifndef inline
++# define inline
++#endif
++
++#define INLINE inline
++
+ #include "common.h"
+ #include "encoder.h"
+ #define LONDON			/* enable "LONDON" modification */

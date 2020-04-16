@@ -1,0 +1,23 @@
+VCDImagerGUI is small GUI to the VCDImager.
+
+What's new? 
+v0.6 - SVCD Support.
+v0.5 - A progress bar added.
+
+What? 
+A simple GUI to VCDImager. VCDImager converts mpgs to BIN/CUE in compliant VCDFormat that can be burn with cdrwin/fireburner. 
+More info here http://www.hvrlab.dhs.org/~hvr/vcdimager/ 
+
+How? 
+Extract all files to a folder. 
+Run VCDImagerGUI.exe.
+Select Format
+Load up the mpgs in the order that you want them on the VCD. 
+Select where to save the bin file. 
+Change the VCD Volume Label to anything you want to it be.
+Hit Make BIN...and waaaaaaaaaaaaaaaaaaaaaaaait. 
+Done.
+
+
+Baldrick@vcdhelp.com
+

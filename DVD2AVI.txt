@@ -1,0 +1,243 @@
+==============================================================
+        DVD2AVI  version 1.76                 by LOLI.J
+==============================================================
+
+============
+  Prologue
+============
+
+  DVD2AVI is a free MPEG-2 decoder and supports MMX-enhanced CPU only.
+  Please put DVD2AVI.exe and DVD2AVI.vfp (VFAPI Plug-In) in the same directory.
+
+==========================
+  Function  Introduction
+==========================
+
+[Open]
+
+  Open MPEG-2 program streams (M2P, VOB) or video streams (M2V)
+
+  Although DVD2AVI appends sequential files automatically, some limitations remain.
+  Once the result doesn't meet your expectations, please ADD or DEL files by yourself.
+
+  DVD2AVI cannot handle program streams concurrently with video streams, so avoid putting them together.
+
+  DVD2AVI doesn't accept encrypted VOB as well as multi-angle titles.
+  Pre-processing is necessary.
+
+  DVD2AVI doesn't and won't support MPEG-1 stream. The simplest way is openning
+  MPEG-1 by TMPGEnc and then feeding the data to other softwares through VFAPI.
+
+  DVD2AVI doesn't support MPEG-2 YUV 4:4:4 format or transport streams (D-VHS, DVB) currently.
+
+[Save AVI]
+
+  Save AVI (excluding audio) through Video Compression Manager provided by Windows.
+  By choosing the corresponding [Track Number] at first, audio file will be stored separately (WAV, AC3, or MPA)
+
+  Before saving AVI, you must decide the [Color Space] at first and VCM will list all available codecs.
+  However, there are some exceptions. For example, uncompressed AVI doesn't support YUV 4:2:2 format.
+
+  DVD2AVI splits AVI at 2GB automatically due to the limitation of VFW structure.
+  You can concatenate multiple AVIs by AviUtl or VirutalDub and then output seamlessly through VFAPI or Frame Server.
+
+  Actually, the most powerful usage of DVD2AVI is based on VFAPI. [Save AVI] is almost useless.
+
+  The fastest way to output AVI is compressing by Huffyuv codec based on YUV 4:2:2 color space.
+  It provides the highest quality without any loss and suitable for the operation of short clips, e.g. OP/ED
+
+[Process WAV]
+
+  This function performs [48->44.1KHz], [Normalization], and [Delay Compensation] at once for multiple WAVs.
+  Before processing WAV, you must decide the details of [48->44.1KHz] and [Normalization] at first.
+
+[Load Project]
+
+  Open D2V for reuse
+
+[Save Project]
+
+  Save D2V (DVD2AVI Project File) for VFAPI utilization
+  It's hard to describe the usage of VFAPI in a few words.
+  For futher information, please refer to following links of http://hiroko.ee.ntu.edu.tw/guide.html
+
+  Make sure the process of saving D2V is FINISHED before you close DVD2AVI !
+
+[Stop]
+
+  Interrupt the processing of [Preview], [Save AVI], [Process WAV], [Save Project], and [Pre-Scale Decision]
+
+[Exit]
+
+  Close DVD2AVI
+
+[Drag & Drop]
+
+  DVD2AVI supports files drag & drop. You can drag VOB/M2P/M2V/D2V/WAV and drop into DVD2AVI directly.
+  WAV drag & drop is designed for single WAV processing and only available without grayed [Process WAV].
+
+=============================================================================================================
+
+[iDCT Algorithm]
+
+  iDCT algorithms possess the quality of MPEG-2 decoding.
+
+  First of all, these three iDCTs are all IEEE-1180 compliance which confirms the
+  quality of iDCT algorithms. It's really hard to tell the difference perceptually.
+  
+  Generally speaking, speed of 32-bit MMX/SSEMMX > 64-bit Floating Point > IEEE-1180 Reference iDCT
+  In view of this, [32-bit MMX/SSE MMX iDCT] is recommended.
+
+  Mathematically, quality of IEEE-1180 Reference > 64-bit Floating Point > 32-bit MMX/SSEMMX iDCT
+  Reference iDCT implies lossless transformation for those who pursue for the limit.
+
+  SSE MMX is a bit faster than MMX iDCT because it invokes PSHUFW instruction.
+  If your CPU supports (P3, P4, Athlon, Duron, some Cerelon), DVD2AVI will choose the faster one automatically.
+
+[Field Operation]
+
+  [Forced FILM] is designed for FILM or HYBRID (FILM XX%, NTSC XX%) source.
+
+  Forced FILM is based on RFF detection and frame decimation/duplication. 
+  NTSC or PAL + Forced FILM ON -> garbage 
+  FILM + Forced FILM ON -> synchronous 23.976 fps flawless FILM (equals to IVTC)
+
+  HYBRID + Forced FILM ON -> synchronous 23.976 fps semi-FILM 
+  Depending on the nature of video sources, unsmooth playback or interlaced frame is possible.
+  If you can't satisfy with the result, switch to HYBRID + Forced FILM OFF -> IVTC -> FILM 
+
+  For further information please refer to http://hiroko.ee.ntu.edu.tw/doc/issue.html#videotype
+
+  [Swap Field Order] changes Top (Odd) Field First to Bottom (Even) Field First or vice versa
+  Although VFAPI supports this function, however, it will pull down the decoding speed.
+  Avoid swapping field order through VFAPI unless it's really necessary.
+
+  Note that there is no absolute field order in FILM/HYBRID video.
+  The TFF flag of the first frame decides the field order.
+  You can check the field order by INFO value ([T]op or [B]ottom field first) of Statistics Window.
+  For example, in order to display smoothly on TV, bottom field first is always necessary for Canopus DV Codec.
+
+[Color Space]
+
+  This option influences the color space conversion of display and AVI output.
+  Most MPEG-2 streams are based on YUV 4:2:0 format.
+  It's necessary to be converted to other popular format for display and edit.
+
+  YUV 4:2:0 -> YUV 4:2:2 -> {DirectDraw YUY2 Overlay} -> Huffyuv, MPEG-4, DV
+  YUV 4:2:0 -> YUV 4:2:2 -> YUV 4:4:4 -> RGB 24-bit -> {GDI Display} -> most codecs
+
+  The processing of [YUV 4:2:2] is much simple and faster than [RGB 24-bit].
+  However, it's not widely supported by video codecs and display cards.
+  
+  If YUY2 Overlay is supported on your system, DVD2AVI will switch to [YUV 4:2:2] automatically.
+  Otherwise you won't see anything when previewing by [YUV 4:2:2].
+
+  VFAPI is based on [RGB 24-bit] always (for maximum flexibility) no matter which option is selected.
+
+[YUV -> RGB]
+
+  Generally speaking, the color scale of TV and PC monitor is differnet.
+  The RGB value of pure black on PC is (0, 0, 0) On the other hand, it's (16, 16, 16) on TV.
+  If you want to watch the video on PC, it's better to choose [PC Scale] for full-scale colors.
+
+  It's hard to decide which option is correct when you watch on TV.
+  Video editors, encoders, and codecs all affect the color scale of the final result.
+  Try both scale and compare them on TV to see which one is smiliar to original source.
+
+  This option influences preview and AVI output of [RGB 24-bit] as well as VFAPI processing.
+  You must switch the [Color Space] to [RGB 24-bit] in order to tell the difference.
+
+[Luminance Filter]
+
+  This filter is similiar to normal brightness/contrast filters which are based on RGB-Plane.
+  It works on Y-Plane only (3X faster than RGB-plane) and pulls down the decoding speed about 7%.
+  If you can't statisfy with the result, switch to color correction filters of other video editors.
+
+[Clip & Resize]
+
+  The more you clip, the faster the decoding speed is.
+  It's better to clip (if necessary) by DVD2AVI before sending to other editors through VFAPI.
+
+  There are some limitations on this filter due to MMX optimizations and field operations.
+  The value of [Left], [Right], [Top], and [Bottom] must be 2X (multiples of two)
+  [Left] + [Right] and [Top] + [Bottom] both must be 8X.
+  You should decide [Left] and [Top] at first and later modify [Right] and [Bottom].
+
+  The title bar of DVD2AVI shows possible multiples of the picture width and height.
+  This multiple is very important for video codec processing.
+  For examples, Matrox G400 won't enable DirectDraw Display when watching MPEG-4 unless it's [32X][16X].
+
+=============================================================================================================
+
+[Track Number]
+
+  Specify the number of audio track which you decide to extract.
+  By selecting the track number when [Preview] the video, the format of each track is shown on Statistics Window.
+
+[Channel Format]
+
+  [Auto Select] is practical in most cases.
+  DVD2AVI detects the audio type (Dolby Digital, Linear PCM or MPEG Audio) automatically.
+
+[Dolby Digital]
+
+  [Demux] rips out the specific Dolby Digital (AC-3) raw stream (.ac3)
+  [Demux All Tracks] rips out all Dolby Digital raw streams inside the program stream.
+  [Decode] decodes the specific Dolby Digital raw stream to PCM waveform (.wav)
+
+  [Dynamic Range Control] and [Dolby Surround] affect the result of [Decode].
+
+  The optimal [Dynamic Range Control] option mainly depends on the nature of source and your audio-visual environment.
+  In my opinion, it's better to select [Normal] for movie titles and [Off] for music titles.
+  Sometimes there is no difference since the manufacturer prefers full dynamic range and doesn't provide DRC.
+
+  [Normal] is similiar to 'Line out mode' and [Heavy] is similiar to 'RF-remod mode' of Sonic Foundary Soft Encode. 
+  It seems the WinDVD directshow filter (iviaudio.ax) invokes [Heavy] DRC also.  However, [Heavy] is NOT recommended
+  because it usually results in obvious volume transitions, especially for music titles. 
+
+  DRC averages the volume (dynamic range compression) and [Normalization] is still necessary after DRC.
+
+  The difference between Conventional Stereo and [Dolby Surround Downmix].
+
+  Conventional Stereo (5.1->2ch)
+
+    Lo = L + c' * C + s' * Ls (+ lfe' * LFE) 
+    Ro = R + c' * C + s' * Rs (+ lfe' * LFE) 
+
+  Dolby Surround Downmix (5.1->2ch)
+
+    Ls + Rs -> 7KHz low-pass filter (in order to obey the DS spec) -> S
+
+    Lt = L + c" * C - s" * S (+ lfe" * LFE) 
+    Rt = R + c" * C + s" * S (+ lfe" * LFE) 
+
+    Lt, Rt -> Pro-Logic rematrixing (inverse computation) -> L, R, C, S (2->4ch)
+
+  [Pre-Scale Decision] is designed to reduce the quantization error of Dolby Digital decoding.
+  Specify the [Track Number] and set the value of [Normalization] at first then start [Pre-Scale Decision].
+  It will take a while to decode and compute the pre-scale ratio by peak value.
+  This ratio is shown by INFO value of Statistics Window and applied to later decoding.
+
+[MPEG Audio]
+
+  [Demux] rips out the specific MPEG Audio raw stream (.mpa)
+  [Demux All Tracks] rips out all MPEG Audio raw streams inside the program stream.
+
+[48 -> 44.1KHz]
+
+  DVD2AVI implants the downsampling algorithm from WAVEFS44.
+  The difference is that DVD2AVI preserves the gain=1 and invokes overflow clipping.
+
+  Although this conversion takes a lot of time, the quality is excellent compared with other softwares.
+  [Mid] provides the acceptable quality in many cases.
+  [UltraHigh] is designed for those who pursue for the best.
+
+[Normalization]
+
+  [Normalization] modifies the volume to a certain degree.
+  The optimal value depends on your applications.
+  For example, I usually choose 100 for PC headphone (MPEG-4) and 70 for TV display (VCD)
+
+==============================================================
+        HTML version  http://hiroko.ee.ntu.edu.tw/doc/
+==============================================================

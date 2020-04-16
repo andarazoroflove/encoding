@@ -1,0 +1,81 @@
+Antiflicker Filter for Virtual Dub
+Version 1.1
+
+[Place this text file in the VirtualDub plugins directory to make
+it available via the Help button on the filter configuration dialog
+box. The computer must have a program called Notepad available in
+its search path.]
+
+When video at one frame rate is projected and then recorded from the
+projection screen at a different frame rate, a temporal moire pattern,
+or flicker, is produced. This filter removes the flicker, thereby making
+this a viable process. For example, it becomes feasible to project 18 fps
+films and record them with a 25 fps PAL camcorder.
+
+The process for using the filter is a bit tricky. Here is the step-by-step
+process. Warning: deviations can result in crashes of VirtualDub. 
+
+1. Start VirtualDub.
+
+2. Open the input video.
+
+3. Add the deflicker filter. Set the window size, softening threshold, and
+interlacing mode as described below. Check "Prepare video" and save the
+filter with OK, OK.
+
+4. Now on the VirtualDub timeline, play the video through to completion
+using the >o button. The output pane will remain black. Do not rewind or
+anything else yet! (You may NOT move around on the timeline in "Prepare
+video" mode. If you rewind, you have to play through again until completion.
+Never rewind and then change to "Process video" mode.)
+
+5. Reconfigure the deflicker filter for "Process video".
+
+7. Use the VirtualDub timeline |< button to rewind to the start of the clip.
+
+8. Play the video to see the filtered result. You can rewind and replay if you
+want, or rewind and then Save AVI. You can also freely move around on the
+timeline in "Process video" mode (but NOT in "Prepare video" mode).
+
+The following options are available:
+
+Window size: This is the size of the moving average of frame luminance values.
+This produces the luminance value that frames are adjusted to. The idea is that
+you want it as small as possible while still removing flicker. Ideally, it is equal to
+the number of frames that one flicker peirod spans. For example, if the video
+frame rate is 25 fps and the flicker is at 7 fps (example of 18 fps shot at 25 fps;
+25 -18 = 7), then one flicker period is 25/7 = 3.57 frames. We want our window
+to exactly cover an integral number of flicker cycles. So a good choice here would
+be a window size of 7 (~ 2 * 3.57). You can always set a long window size if in
+doubt, but doing so will spread out luminance changes in the clip. A window size
+of 25 is a good general-purpose compromise.
+
+Softening: This is the threshold for the final temporal softening phase. Often, the
+physical process that creates the flicker also creates within-frame illumination changes,
+causing adjacent frames to differ. This softening phase greatly reduces this effect.
+A higher number causes greater temporal softening but can leave motion trails. If the
+physical process does not produce within-frame changes, this phase can be disabled
+by setting the softening to 0.
+
+Interlaced source: If the source video clip is interlaced, check this option to enable
+field-mode processing.
+
+Technical notes. The first phase of the filter performs a moving average over the
+video and rescales the pixels in the frames to approach this average. The second phase
+applies a temporal softening. A two-pass algorithm is used to avoid having to buffer
+an inordinate number of frames (equal to the window size).
+
+Thanks to Niels Basjes for suggesting the creation of this filter, providing
+test files, and giving valuable feedback. The final temporal softening phase
+is adapted from code by Steven Don. Thanks to Jeff Gonion for valuable
+theoretical discussions on digital filtering. 
+
+For additional information, version updates, and other filters, please
+go to the following web site:
+
+Filters for VirtualDub
+http://sauron.mordor.net/dgraft/index.html
+
+Donald Graft
+March 30, 2002
+(C) Copyright 2000-2002, All Rights Reserved

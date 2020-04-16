@@ -1,0 +1,138 @@
+; DivX 5.0 Pro Video & Audio Decodec Play Version
+; 9x & ME & NT & 2k & XP
+; by Seatroll for NASA
+; AC3 (dolby 5.1) codec updateded by Seatroll
+
+[Version]
+Signature = "$CHICAGO$"
+Class = MEDIA
+
+[SourceDisksNames]
+1="Video & Audio pack",, 0001
+
+[Installable.Drivers]
+divx = 1:divx.dll, "vidc.divx", "%DivX5%" , , ,
+l3radus = 1:l3codecp.acm, "msacm.l3radius", "%layer3p%" , , ,
+
+[UpdateIni]
+system.ini, drivers32,,"vidc.divx=divx.dll"
+
+system.ini, drivers32,,"msacm.l3radius=l3codecp.acm"
+
+[UpdateIni.un]
+system.ini, drivers32,"vidc.divx=*",
+system.ini, drivers32,"msacm.l3radius=*",
+
+
+[SourceDisksFiles]
+divx.ico=1
+divx.dll=1
+divx50.inf=1
+divxdec.ax=1
+mp4fil32.dll=1
+iviaudio.ax=1
+mpgaudio.ax=1
+l3codecp.acm=1
+
+[DefaultInstall]
+CopyFiles=DIVX.Copy,DIVX.Copy.Inf
+Addreg = DIVX.AddReg, DIVX.AddReg95, DIVX.DoReg
+Updateinis = Updateini
+
+[DefaultInstall.ntx86]
+CopyFiles=DIVX.Copy,DIVX.Copy.Inf
+Addreg = DIVX.AddReg, DIVX.AddRegNT, DIVX.DoReg, AddDescriptions.NT
+Updateinis = Updateini
+
+[Remove_Mpeg]
+AddReg = DIVX.Unregister
+DelReg = DIVX.DelReg
+Updateinis = Updateini.un
+DelFiles =DIVX.Copy, DIVX.Copy.Inf
+
+[Remove_Mpeg_NT]
+AddReg = DIVX.Unregister
+DelReg = DIVX.DelReg, DelDescriptions.NT
+Updateinis = Updateini.un
+DelFiles =DIVX.Copy, DIVX.Copy.Inf
+
+[DIVX.Copy]
+divx.ico
+divx.dll
+divxdec.ax
+mp4fil32.dll
+iviaudio.ax
+mpgaudio.ax
+l3codecp.acm
+
+[DIVX.Copy.Inf]
+divx50.inf
+
+[DIVX.AddReg95]
+; UnInstall
+HKLM,"%UnInstallPath%","DisplayName",0,"%UninstallDispName%"
+HKLM,"%UnInstallPath%","DisplayICon",0,"%11%\divx.ico"
+HKLM,"%UnInstallPath%","UninstallString",0,"%10%\rundll.exe setupx.dll,InstallHinfSection Remove_Mpeg 132 %17%\%InfFile%"
+
+[DIVX.AddRegNT]
+; UnInstall
+HKLM,"%UnInstallPath%","DisplayName",0,"%UninstallDispName%"
+HKLM,"%UnInstallPath%","DisplayICon",0,"%11%\divx.ico"
+HKLM,"%UnInstallPath%","UninstallString",0,"%11%\rundll32.exe setupapi.dll,InstallHinfSection Remove_Mpeg_NT 132 %17%\%InfFile%"
+
+[DIVX.AddReg]
+HKLM,"%MediaRes%\icm\vidc.divx","Description",0,"%DivX5%"
+HKLM,"%MediaRes%\icm\vidc.divx","Driver",0,"divx.dll"
+HKLM,"%MediaRes%\icm\vidc.divx","FriendlyName",0,"%DivX5%"
+
+; Layer3
+HKLM,"%MediaRes%\acm\msacm.l3radius","Description",0,"%Layer3p%"
+HKLM,"%MediaRes%\acm\msacm.l3radius","Driver",0,"L3codecp.acm"
+HKLM,"%MediaRes%\acm\msacm.l3radius","FriendlyName",0,"%Layer3p%"
+
+
+[DivX.DelReg]
+HKLM,"%MediaRes%\icm\vidc.divx"
+
+HKLM,"%MediaRes%\acm\msacm.l3radius"
+
+HKLM,"%UnInstallPath%"
+
+[DIVX.DoReg]
+HKLM,"%RunOnce%","%Reg_% DivX 5.0 Filter ...",,"%11%\regsvr32.exe /s %11%\divxdec.ax"
+HKLM,"%RunOnce%","%Reg_% AC3 codec (intervideo)",,"%11%\regsvr32.exe /s %11%\iviaudio.ax"
+HKLM,"%RunOnce%","%Reg_% AC3 codec (mpegvideo)",,"%11%\regsvr32.exe /s %11%\mpgaudio.ax"
+
+[DIVX.Unregister]
+HKLM,"%RunOnce%","%UnReg_% DivX 5.0 Filter...",,"%11%\regsvr32.exe /s /u %11%\divxdec.ax"
+HKLM,"%RunOnce%","%UnReg_% AC3 codec (intervideo)",,"%11%\regsvr32.exe /s /u %11%\iviaudio.ax"
+HKLM,"%RunOnce%","%UnReg_% AC3 codec (mpegvideo)",,"%11%\regsvr32.exe /s /u %11%\mpgaudio.ax"
+
+[AddDescriptions.NT]
+HKLM,"%DrvDescNT%","divx.dll",0,"%DivX5%"
+HKLM,"%DrvDescNT%","l3codecp.acm",0,"%Layer3p%"
+
+[DelDescriptions.NT]
+HKLM,"%DrvDescNT%","divx.dll"
+HKLM,"%DrvDescNT%","l3codecp.acm"
+
+[DestinationDirs]
+DefaultDestDir = 11	; LoadDir_SYS
+DIVX.Copy = 11
+DIVX.Copy.Inf = 17
+
+[Strings]
+Reg_="Registering"
+UnReg_="Unregistering"
+MediaRes="SYSTEM\CurrentControlSet\Control\MediaResources"
+RunOnce="Software\Microsoft\Windows\CurrentVersion\RunOnce\Setup"
+DrvDescNT="SOFTWARE\Microsoft\Windows NT\CurrentVersion\drivers.desc"
+
+Layer3p="Fraunhofer IIS MPEG Layer-3 Codec (Pro Radius)"
+DivX5="DivX 5.0.2 Pro Corporate Edition"
+InfFile="divx50.inf"
+UninstallDispName="__ DivX 5.0.2 Pro Video Codec __"
+UnInstallPath="Software\Microsoft\Windows\CurrentVersion\Uninstall\DivX5PRO"
+MediaClassName="Media Devices"
+mfgname="Project DivX 5.0 Pro"
+

@@ -1,0 +1,44 @@
+Smart Smoother Filter for Virtual Dub
+(Version 1.1)
+
+[Place this text file in the VirtualDub plugins directory to make
+it available via the Help button on the filter configuration dialog
+box. The computer must have a program called Notepad available in
+its search path.]
+
+This filter performs structure-preserving smoothing (blurring). It is ideal
+for removing video noise as well as MPG/JPG blocking artifacts. The really
+exceptional feature is that far from blurring image structure (edges, corners,
+etc.), it actually sharpens them somewhat! I think you will agree that this
+is a really awesome smoothing filter. Filter preview is supported.
+
+A test is provided in the zip file, "arm.avi". It exhibits severe MPG blocking
+artifacts. Try this: set the diameter to 11 and the strength to 50. Leave
+interlaced unchecked. Look at the result. The text is actually sharpened a bit
+and the blocking is totally gone. Image structure is almost perfectly retained. 
+
+The following options are provided:
+
+Diameter: This option determines the size of the area over which blurring is possible.
+The bigger it is the slower the filter runs. Use large diameters for blocking artifacts
+and smaller ones for graininess.
+
+Strength: This option determines how much blurring is done. Use the lowest amount
+that removes your noise/artifacts.
+
+Interlaced source video: Check this if your source video is interlaced.
+
+This filter requires an MMX-capable processor.
+
+Thanks to Avery Lee and Gunnar Thalin for optimizing this filter for speed.
+Thanks to Narendra Verma for suggesting that we needed a better smoother.
+
+For additional information, version updates, and other filters, please
+go to the following web site:
+
+Filters for VirtualDub
+http://www.geocities.com/Colosseum/Pressbox/8699/index.html
+
+Donald Graft
+June 28, 2000
+(C) Copyright 2000, All Rights Reserved

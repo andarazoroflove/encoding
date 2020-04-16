@@ -1,0 +1,157 @@
+
+		  DivX ;-) MPEG4 Hi-Res Video Codec
+		3.11alpha release - http://divx.ctw.cc
+			  ---------------	
+		     
+What's new in 3.11alpha :
+	- Only fixes the CPU slider issue in the Direct Show decoder...
+	  thank to Maniakzi for this...
+
+What's new in 3.1alpha :
+	- Now comes with a hacked version of M$ WMA audio codec
+What's NOT new in 3.1alpha :
+	- Nothing changes in the video codecs and filters
+	
+
+Why alpha stage ?
+Because the WMA audio crack is far from perfect (max 16bit/44KHz @ 64Kbit/s) and
+the WMA direct show decoder have not been cracked yet...
+I need Help for This... Please post at Oleg's forum...
+
+The MP3 audio track encoded with older version of DivX ;-) is, for sure, playable
+with this and newer version of DivX ;-) ...
+
+
+Files in archive:
+
+	engine:
+
+DivXc32.dll	   Video Codec Version 4.1.00.3920 (Low-Motion codec)
+DivXc32f.dll	   Video Codec Version 4.1.00.3917 (Fast-Motion codec)
+DivX_c32.ax	   Direct Show Decoder Version 4.1.00.3917 (Hi Quality decoder) 
+DivXa32.acm	   Audio Codec Version 4.1.00.3920alpha (Better than MP3 audio)
+L3codeca.acm	   Fraunhofer-IIS MP3 Radium's audio codec Version 1.2.0.63
+
+	install:
+
+DivX.inf	   Install script
+Register_DivX.exe  Auto-install the script (for lazzy guys !)
+
+	Utils:
+
+DivX MPEG4 Video
+	Codec.txt  This text
+DivX Site.url	   Link to the internet site
+SetStereo.exe	   Radium's MP3 codec stereo mode changer
+Stereo.txt	   Help about SetStereo.exe
+
+
+
+  Install 9x & NT
+
+    Right click on DIVX.inf and select install in the pop-up menu
+   or
+    Double click on Register_DivX.exe
+   
+
+
+This Codec provide full motion, high resolution, high quality video at low bitrate !
+You kidding ? No !
+
+Try to play with the DivX ;-) filter settings ! Right click on the Video in Windows Media
+Player select Advanced -> properties -> DivX ;-) MPEG-4 Video Codec. You can change
+various video settings and improve the visual qualilty by moving the CPU slider.
+
+This is a Hack of selected version of the M$ MPEG4 codec
+FOURCC and CLSid code have been hacked so you can make ALWAYS WORKING AVIs
+it can coexist with retail version of the media encoder tools
+and newers or hacked version of M$ MPEG4 codec.
+
+
+1-2-3 How-to
+
+tools needed:
+
+DeCSS/DODSRipper	( http://remco.xgov.net/dvd )
+VirtualDub		( http://www.geocities.com/virtualdub )
+FlasKMPEG		( http://go.to/flaskmpeg )
+DVD2MPEG Squeezer	( http://www.dvdpiracy.net/ )
+AVI Plug-in		( http://members.xoom.com/agrab )
+DivX ;-) Codec 		( http://divx.ctw.cc )
+
+Read ALL included help files !
+
+site to stop by:
+http://www.dvdpiracy.net/
+
+
+1- Use a CSS descambler to copy your DVD to your HD, keep the DVD structure
+
+Ultra Nice Quality:
+-------------------
+
+2- Convert Video to DivX ;-) AVI using FlaskMPEG with the AVI plug in
+   I recommand to set the destination size to a big value such a 640x352 for 16/9 pal
+   Use the Decode Audio Mode and select 44100 KHz
+   Select PCM compression for Audio
+
+   Select the DivX ;-) Low or High for Video
+   Set the Keyframe to 10 seconds
+   Set the Compression Control to 100 (Crispness)
+   Set the Data rate to 1h30=900 2h=750
+
+3- Use VirtualDub to
+   compress and multiplex Audio with Video
+   Select your AVI video file,
+   Video -> Direct Stream Copy
+   Audio -> Interleaving -> 500 ms of audio before video start
+                         -> Interleave audio every 500 ms
+   Audio -> Compression -> Choose DivX ;-) Audio at 64Kbps for DivX ;-) Video
+   Audio -> Full Processing Mode
+   Save the final AVI
+
+With Subtitles:
+---------------
+
+2- Convert Video to DivX ;-) AVI using DVD2MPEG Squeezer with the AVI plug in
+   I recommand to set the destination size to a big value such a 640x352 for 16/9 pal
+   Set the Audio Output format to WAV 44100 KHz
+   Do not use 'Add bands'
+
+   Select the DivX ;-) Low or High for Video
+   Set the Keyframe to 10 seconds
+   Set the Compression Control to 100 (Crispness)
+   Set the Data rate to 1h30=900 2h=750
+
+3- Use VirtualDub to
+   compress and multiplex Audio with Video
+   Select your AVI video file, in Audio -> WAV audio select your WAV file
+   Video -> Direct Stream Copy
+   Audio -> Interleaving -> 500 ms of audio before video start
+                         -> Interleave audio every 500 ms
+   Audio -> Compression -> Choose DivX ;-) Audio at 64Kbps for DivX ;-) Video
+   Audio -> Full Processing Mode
+   Save the final AVI
+
+Et voila !
+
+
+
+
+HEX edit hack of default value !
+for those who want to make direct graphedit DivX ;-) AVIs
+
+In the codec file DivXc32.DLL (low-motion)
+	The Bit Rate at AC6
+	The Quality at 1EA8
+	The Keyframes at 1EAF
+
+In the codec file DivXc32f.DLL (fast-motion)
+	The Bit Rate at AC6
+	The Quality at 1EA8
+	The Keyframes at 1EAF
+
+
+In the Decoder file DivX_c32.AX
+	The default CPU at 20B3
+

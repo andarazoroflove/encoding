@@ -1,0 +1,1 @@
+rundll32.exe TMPGEnc.vfp,RunDLL_VFAPIInstall UnRegister

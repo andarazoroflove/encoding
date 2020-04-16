@@ -1,0 +1,135 @@
+<html>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Creating VideoCD Images</title>
+<base target="_self">
+</head>
+
+<body link="#FFFFFF" vlink="#FFFFFF" alink="#000000">
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="100%">
+      <p align="center"><a href="title.html"><img border="0" src="images/vcdgear_logo.jpg" align="right" width="200" height="36"></a></p>
+      <hr>
+      <p align="center">&nbsp;</td>
+  </tr>
+</table>
+<p align="left"><font face="Verdana" size="5">Creating VideoCD Images</font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><u><font face="Arial" size="4">STEP 1</font></u></p>
+<p align="left"><img border="0" src="images/videocd-1.jpg" width="685" height="399"></p>
+<p align="left"><font face="Arial" size="3" color="#000000">Select the VideoCD
+creation method you want to use and a volume name for the image file.
+</font></p>
+<p align="left"><font face="Arial" size="4">Setting the Volume Label</font></p>
+<p align="left"><font face="Arial" size="3" color="#000000">VCDGear can accept a
+volume label for the image you create.&nbsp; The volume label can be entered in<br>
+the space provided -- you have a maximum of 32 characters.&nbsp; VCDGear can
+also apply a labelling<br>
+format so that you can have different volume labels if you are outputting to
+multiple images (see Spanning).<br>
+Pressing <b>[ ... ]</b> will let you enter in the format of the volume label.</font></p>
+<p align="left"><font face="Arial" size="3" color="#000000">For example, suppose
+VCDGear generates 3 images and you want each image to have the following<br>
+label:&nbsp;&nbsp;&nbsp; MOVIE_DISC_1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+MOVIE_DISC_2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; MOVIE_DISC_3</font></p>
+<p align="left"><font face="Arial" size="3" color="#000000">The volume label
+format will be:&nbsp;&nbsp; MOVIE_DISC_%d</font></p>
+<p align="left"><font face="Arial" size="3" color="#000000">The %d would
+represent the image number.&nbsp; Anyone who is familiar with Java, C/C++ will
+recognize<br>
+this format.&nbsp; Of course, you can also have %02d and any other crazy
+combination you want :-)</font></p>
+<p align="left"><font face="Arial" size="3"><b>Note: The ISO standard for
+the volume label requires that only certain characters can be<br>
+used.&nbsp; VCDGear will allow one to break this standard so that high-bit
+ASCII can also<br>
+be used.</b></font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><font face="Arial" size="4">Output Naming Format</font></p>
+<p align="left"><font face="Arial" size="3" color="#000000">When you have files
+added into the track list, the <b>[ &lt;&lt; multi-file naming ]</b> will be
+available.&nbsp; This<br>
+lets you select how you want the output file to look like.&nbsp; Like the volume
+label formatting, multiple<br>
+output files (due to spanning) can each be given a naming convention so that the
+first image<br>
+has a name of:&nbsp;&nbsp;&nbsp;
+IMAGE_1.bin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; and the
+second:&nbsp;&nbsp;&nbsp; IMAGE_2.bin&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+etc...</font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><u><font face="Arial" size="4">STEP 2</font></u></p>
+<p align="left"><img border="0" src="images/videocd-2.jpg" width="685" height="399"></p>
+<p align="left"><font face="Arial" size="3"><font color="#000000">Add video
+tracks in the order you want the files to play in.&nbsp; The positions of the
+tracks can be</font><b><font color="#FF0000"><br>
+</font></b><font color="#000000">moved </font><b><font color="#FF0000"></font></b><font color="#000000">up
+</font><font color="#000000">and down via the up/down arrows.&nbsp; Tracks can
+also be deleted by the <b> [remove track]</b>.</font><font color="#FF0000"><b><br>
+</b></font><font color="#000000">Selecting a specific track in your list will
+display MPEG information about that file in the left box.</font><b><font color="#FF0000"><br>
+</font></b><font color="#000000">A track list can be cleared by clicking on the <b>
+[clear list]</b> button.</font></font></p>
+<p align="left"><font color="#000000" face="Arial" size="3">In the VideoCD Track
+List, there are 3 columns.&nbsp; The + column represents the <i>image number</i>.&nbsp;
+If you are<br>
+only making a single CD image, this will always be 1.&nbsp; If you span your
+MPEGs, there may be more<br>
+than 1 image.&nbsp; The # column represents the track number for that image.</font></p>
+<p align="left"><font color="#000000" face="Arial" size="3">You can play any
+track in the list by selecting it and clicking on the play button beside the
+down arrow.</font></p>
+<p align="left"><font face="Arial" size="4">Spanning Images</font></p>
+<p align="left"><font color="#000000" face="Arial" size="3">VCDGear can span
+your images if your MPEGs are over 74min or 80min in length.&nbsp; To enable
+this,&nbsp;<br>
+make sure the Span VideoCD Images at 74min (or 80min) is checked.&nbsp; Any
+additional tracks that<br>
+you add will also be split across multiple images if total disc time for that
+image goes over 74/80mins.</font></p>
+<p align="left"><font face="Arial" size="4">Adding a Sample Clip</font></p>
+<p align="left"><font color="#000000" face="Arial" size="3">You can only add a
+sample clip if you have tracks in your track list.&nbsp; Clicking on Yes to add
+a sample&nbsp;<br>
+clip will bring up the following screen:</font></p>
+<p align="left"><img border="0" src="images/sample-editor.jpg" width="717" height="451"></p>
+<p align="left"><font color="#000000" face="Arial" size="3">You can set the
+starting position of the sample by moving the slider (not the slider under the
+video).<br>
+Clicking on <b>[ ? random ]</b> for the starting position will randomly select a
+point in the video.&nbsp; Click <b>[ set &gt;&gt; ]<br>
+</b>when you're done picking the starting position.</font></p>
+<p align="left"><font color="#000000" face="Arial" size="3">Move the slider to
+set the finish position.&nbsp; There are buttons for preset 30/60 second lengths
+and one<br>
+for random.&nbsp; When the slider is in position, click OK.</font></p>
+<p align="left"><font color="#000000" face="Arial" size="3">The sample clip will
+be generated after VCDGear has finished building the images.</font></p>
+<p align="left">&nbsp;</p>
+<p align="left"><u><font face="Arial" size="4">STEP 3</font></u></p>
+<p align="left"><font face="Arial" size="3" color="#000000">The track pause time
+(delay between video tracks) can be set by adjusting the value.&nbsp; By
+default, this is<br>
+set to 5 seconds.</font></p>
+<p align="left"><font face="Arial" size="3" color="#000000">Click <b> [save]</b> to
+specify your output file.</font></p>
+<p align="left"><font face="Arial"><b>NOTE:</b> Save your output file to the
+hard drive and *NOT* to your CD drive.</font><font color="#000000" face="Arial" size="3"><br>
+</font><font face="Arial">Refer to Writing VideoCD Images to CD on what to do
+after this step is complete.</font></p>
+<p align="left"><font face="Arial" size="3" color="#000000">Then click <b>[start]</b>!</font><font face="Arial" size="3"><b><font color="#FF0000"><br>
+</font></b></font></p>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+  <tr>
+    <td width="91%" bgcolor="#CCCCCC">&nbsp;</td>
+    <td width="9%" bgcolor="#808080" bordercolor="#000000">
+      <p align="center"><font face="Verdana" color="#FFFFFF"><b><a href="write_videocd.html">next &gt;&gt;</a></b></font></td>
+  </tr>
+</table>
+
+</body>
+
+</html>

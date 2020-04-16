@@ -1,0 +1,116 @@
+;
+; MPEG-Audio 外部エンコーダの引数情報
+;
+
+[info]
+8hz-mp3.exe=8hz-mp3
+SCMPX.exe=SCMPX
+l3enc.exe=L3ENC
+gogo.exe=GOGO
+maenc.exe=MAENC
+toolame.exe=tooLAME
+
+[8hz-mp3:info]
+SupportTypes=3
+
+[8hz-mp3:param]
+" -b %s":BitRate_kbps
+" -c":CopyrightFlag
+" -o":OriginalFlag
+" -crc":CalcCRC
+" %s":SrcFileName
+" %s":DestFileName
+
+
+
+[SCMPX:info]
+SupportTypes=1,2,3
+
+[SCMPX:param]
+" -e "
+" -l1":Layer_1
+" -l2":Layer_2
+" -l3":Layer_3
+" -b%s":BitRate_index
+" -s":ChannelMode_Stereo
+" -j":ChannelMode_JointStereo
+" -e5":EmphasisType_50_15ms
+" -ej":EmphasisType_CCITTj17
+" -x":PrivateFlag
+" -er":CalcCRC
+" -o":OriginalFlag
+" -c":CopyrightFlag
+" %s":SrcFileName
+" %s":DestFileName
+
+
+
+[L3ENC:info]
+SupportTypes=3
+
+[L3ENC:param]
+" -br %s":BitRate_bps
+" -crc":CalcCRC
+" %s":SrcFileName
+" %s":DestFileName
+
+
+
+[GOGO:info]
+SupportTypes=3
+
+[GOGO:param]
+" -b %s":BitRate_kbps
+" -m m":ChannelMode_Mono
+" -m s":ChannelMode_Stereo
+" -m j":ChannelMode_JointStereo
+" -m s":ChannelMode_DualChannel
+" -nopsy"
+" -emp n":EmphasisType_None
+" -emp 5":EmphasisType_50_15ms
+" -emp c":EmphasisType_CCITTj17
+" %s":SrcFileName
+" %s":DestFileName
+
+
+
+[MAENC:info]
+SupportTypes=1,2
+
+[MAENC:param]
+" %s":SrcFileName
+" %s":DestFileName
+" -L1":Layer_1
+" -L2":Layer_2
+" -Mm":ChannelMode_Mono
+" -Ms":ChannelMode_Stereo
+" -Mj":ChannelMode_JointStereo
+" -Md":ChannelMode_DualChannel
+" -Pm"
+" -B%s":BitRate_kbps
+" -Dn":EmphasisType_None
+" -D5":EmphasisType_50_15ms
+" -Dc":EmphasisType_CCITTj17
+" -E":CalcCRC
+" -O":OriginalFlag
+" -C":CopyrightFlag
+
+
+
+[tooLAME:info]
+SupportTypes=2
+
+[tooLAME:param]
+" -m m":ChannelMode_Mono
+" -m s":ChannelMode_Stereo
+" -m j":ChannelMode_JointStereo
+" -m d":ChannelMode_DualChannel
+" -b %s":BitRate_kbps
+" -d n":EmphasisType_None
+" -d 5":EmphasisType_50_15ms
+" -d c":EmphasisType_CCITTj17
+" -c":CopyrightFlag
+" -o":OriginalFlag
+" -e":CalcCRC
+" %s":SrcFileName
+" %s":DestFileName

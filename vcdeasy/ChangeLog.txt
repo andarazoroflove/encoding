@@ -1,0 +1,744 @@
+2001-05-15  Herbert Valerio Riedel  <hvr@gnu.org>
+
+ 	* configure.in: bumped version up to 0.6.2
+
+2001-05-13  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_types.h: fixed for bsdi
+
+2001-05-12  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdrip.c (ripspi): fixed spi ripping
+	(ripspi): improved track ripping, when multiple entry points are available
+
+	* libvcd/vcd.c (_write_vcd_iso_track): set fileno to 0 for svcds
+		in EXT area...
+
+2001-05-11  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files.c (_get_scandata_table): use '<' instead of
+  		'<=' comparison for floating point.
+		(_make_track_scantable): see above
+
+2001-05-07  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdimager.c (main): check bin and cue file 
+		are different
+
+	* libvcd/vcd_stream_stdio.c (vcd_data_sink_new_stdio): warn when
+		overwriting files...
+
+2001-05-06  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (vcd_obj_set_param): 
+		added some boundary checks...
+
+	* libvcd/vcd_util.h (_vcd_strncpy_pad): 
+		moved function here...
+
+	* libvcd/vcd_obj.h: 
+	* libvcd/vcd_files.c (set_info_vcd): 
+	* libvcd/vcd.h: made album id, and volume counts/number configurable
+
+2001-05-04  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files.c: fixed some floating point roundings into
+		right direction
+
+	* libvcd/vcd_mpeg.[ch]: emptied since no longer needed in this form
+
+	* heavy coding session
+	* added audio stream configuration detection
+	* added hack to detect NTSC/PAL for non-standard resolutions 
+	 	should improve X(S)VCD support...
+
+2001-05-04  Keith White <Keith.White@site.uottawa.ca>
+
+	* frontends/cli/vcdrip.c (ripspi): fixed end of item detection
+	
+2001-05-03  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* change gap sizes for svcd
+	* revamped scantable generation
+	* remove scandata.dat creation for vcds, and enabled it for svcds
+	* installed abstracted mpeg stream
+
+2001-05-02  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_mpeg_stream.c: started to abstract mpeg stream
+
+2001-05-01  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* configure.in: bumped version up to 0.6.0
+
+2001-04-29  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (_make_scantable): ignore APS where iframe header is
+		not in the same sector as the gop header
+
+	* frontends/cli/vcdrip.c (dump_search_dat): dump all scanpoints
+		if verbose operation is given
+
+	* libvcd/vcd.c (_finalize_vcd_iso_track): set file number for svcd to 0
+	(_write_sectors): dont warn if PEM in last packet :),
+		set filenumber for svcd mpeg form2 sectors to 1 (not 0!)
+
+	* libvcd/vcd_files.c (set_tracks_svd): assume 1 audio chan instead of 2
+
+2001-04-28  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (_write_m2_image_sector): fix 2336 mode output
+
+	* frontends/cli/vcdimager.c (main): _really_ set the sectorsize...
+
+2001-04-27  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (vcd_obj_new): log libvcd version on first invocation
+
+	* libvcd/vcd_files.c (set_tracks_svd): fixed playing time msf to
+		have 1/75 sec frames
+
+2001-04-26  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdrip.c: minor cleanups
+
+	* configure.in: added check for bitfield ordering in structs
+
+	* libvcd/vcd_files_private.h: replaced !WORDS_BIGENDIAN ifdef's
+		by BITFIELD_LSBF
+
+2001-04-25  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_directory.c: filled in some knowledge gaps regarding XA
+
+	* frontends/cli/vcdrip.c (dump_tracks_svd): see below
+
+	* libvcd/vcd_files.c (set_tracks_svd): see below
+
+	* libvcd/vcd_files_private.h: fixed TracksSVD interpretation for
+		multi track discs
+
+2001-04-20  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (_finalize_vcd_iso_track): 
+		add SEGMENT dir to SVCDs too
+
+2001-04-16  Carsten Koch <ckoch@ptc.com>
+
+	* libvcd/vcd_files_private.h: fixed typo
+
+	* frontends/cli/vcdimager.c: missing #include
+
+2001-04-15  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* configure.in: bumped version up to 0.6.0
+	
+	* frontends/cli/vcdrip.c: 
+		try to ignore IO errors in data stream
+
+	* libvcd/vcd.c (_make_scantable): bail out if 
+		invalid mpeg packet occurs
+	
+	* frontends/cli/vcdrip.c:
+		added --rip-spi operation
+
+	* libvcd/vcd.c (_finalize_vcd_iso_track): fixed directory size 
+		boundary 
+
+2001-03-18  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* configure.in: bumped version up to 0.5.9beta4
+
+	* frontends/cli/vcdimager.c (_add_dir): 
+		experimental addition of --add-dir option
+
+	* libvcd/vcd_directory.c: changed traversal method for pathtable 
+		generation
+
+2001-03-17  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdrip.c: implemented --sector-2336, --verbose
+		and --quiet options
+
+2001-03-16  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files.c (set_tracks_svd): clip play time value to
+	99minutes...
+
+2001-03-15  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (vcd_obj_add_file): 
+		check that raw file is not zero sized
+		(_finalize_vcd_iso_track): fix zero custom file
+		size handling
+
+	* libvcd/vcd_cd_sector.h (CD_MAX_SECTORS): reduced max 
+		sector count take into account that a image
+		starts on 00:02:00
+
+	* libvcd/vcd.c (vcd_obj_add_file): added fix from
+		Phoury Lei to reduce fd leaking
+
+2001-03-11  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* configure.in: bumped version up to 0.5.9beta3
+
+	* libvcd/vcd_mpeg.c (_vcd_mpeg_parse_video): handle 
+		boundary check more gracefully...
+
+2001-03-10  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* switched to HAVE_CONFIG_H system
+
+	* embedded popt as fallback if the system lacks it
+
+	* extended version information by architecture
+
+2001-03-08  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* improved portability considerably
+
+2001-01-21  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* configure.in: bumped version up to 0.5.9beta1
+
+2001-01-20  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdrip.c (rip): ignore stream leadin, if subheader broken
+
+	* libvcd/vcd.c (_write_source_mode2_form1): fixed zeroed-last-block bug,
+		when filesize was a multiple of 2048 bytes...
+
+	* frontends/cli/vcdrip.c, frontends/cli/vcdimager.c: 
+		minor printf-fixes
+
+	* libvcd/vcd_files.c (set_search_dat): new function
+	(get_scandata_dat_size): new function
+	(_get_scanpoint_count): renamed function
+
+	* libvcd/vcd_obj.h: added custom_file_start_extent field
+
+	* libvcd/vcd.c: added support for VCD 2.0 extended files in /EXT
+		(extended psd/lot & scandata.dat)
+
+	* libvcd/vcd_salloc.c (_vcd_salloc_get_highest): fixed off by one error
+
+2001-01-19  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files_private.h: added ScandataDat_v2 structure
+
+2001-01-16  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (_write_sectors): OGT support and secondary 
+		audio channel support added
+
+	* libvcd/vcd_mpeg.c: added detection of OGT packets
+
+2001-01-15  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* configure.in: bumped version up to 0.5.9beta1
+
+	* libvcd/vcd_mpeg.c: some more bound checking...
+
+2001-01-14  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdrip.c (rip): fixed detecting false stream
+		leadouts
+
+	* libvcd/vcd.c (_finalize_vcd_iso_track): fixed relative offset bug
+		in ISO mpegav-entries introduced in 0.5.9alpha4 :-/
+
+2001-01-13  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_mpeg.c (vcd_mpeg_get_type): more skips
+
+	* configure.in: bumped version up to 0.5.9alpha4
+	
+	* libvcd/vcd_files.c (set_info_vcd): lot entry count fixed
+
+	* libvcd/vcd_stream.c (vcd_data_source_read): fixed stream 
+		reposition bug (fixes search.dat transposition)
+
+	* libvcd/vcd.c (vcd_obj_append_mpeg_track): fixed eof condition
+
+	* added broken svcd mode
+
+2001-01-12  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files_private.h: fixed lid1 typo
+		fixed last_psd_ofs/lot_entries misconception
+
+	* frontends/cli/vcdrip.c: fixed LOT max index bug..
+	(dump_lot_and_psd_vcd): #ifdef'ed extended psd stuff
+	(dump_lot_and_psd_vcd): re-prefixed some [] in output
+
+	* libvcd/vcd_files_private.h: added symbolic LOT size #define
+
+2001-01-11  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdrip.c: 
+		merged in fixes from jbj1:
+		fixed ENTRIES[] index start,
+	      	added _calc_psd_wait_time (),
+		search whole LOT
+
+2001-01-10  Herbert Valerio Riedel  <hvr@gnu.org>
+
+        * stream retval fix
+
+	* frontends/cli/vcdrip.c: various --dump improvements 
+
+	* libvcd/vcd.c (vcd_obj_append_mpeg_track): warn when VCD11 and
+		not FILM/NTSC
+
+	* libvcd/vcd_files.c (set_info_vcd): improved VCD1.1 compatibility
+
+2001-01-06  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdrip.c (dump_lot_and_psd_vcd): display more info 
+		about selection lists...
+
+	* libvcd/vcd_files_private.h: started filling psd selection list
+
+	* configure.in: bumped version up to 0.5.9alpha2
+	
+	* frontends/cli/vcdrip.c (dump_pvd): new function for dumping
+		some content of the primary volume descriptor
+	
+	* libvcd/vcd.c (vcd_obj_add_file): fixed size calculation
+		bug for raw files
+
+	* libvcd/vcd_bytesex.c (from_723): new function
+
+	* libvcd/vcd_files_private.h: added SPICONTX.SVD struct
+
+	* frontends/cli/vcdrip.c (dump_tracks_svd): added
+		symbolic names for content types
+
+	* libvcd/vcd.c (_write_sectors): set channel no. 
+		according to content
+
+	* libvcd/vcd_files_private.h: gcc bitset big endian fix
+
+2001-01-05  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdimager.c: added quiet flag
+
+	* libvcd/vcd_iso9660.c (_vcd_iso_pathname_valid_p): 
+		do strict checking
+
+	* libvcd/vcd_util.c (_vcd_strjoin): new function
+	(_vcd_strdup_upper): new function
+
+	* libvcd/vcd_directory.c: make sure, files in ISO fs are ordered
+	(_vcd_directory_mkfile): implemented directory autocreation
+
+	* libvcd/vcd_data_structures.c (_vcd_tree_node_sort_children):
+		new function
+		(_vcd_list_sort): new function
+
+	* libvcd/vcd_directory.c: make use of new tree implementation
+
+	* libvcd/vcd_data_structures.c: added n-way tree implementation
+
+	* libvcd/vcd_util.c (_vcd_memdup): moved/new function
+
+2001-01-04  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_cd_sector.c: enforced _vcd prefix
+
+	* libvcd/vcd_transfer.c: removed module, merged with vcd.c
+
+	* libvcd/vcd_util.c: enforced _vcd prefix
+
+2001-01-03  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* configure.in: bumped version up to 0.5.9alpha2
+
+	* libvcd/vcd.c (vcd_obj_begin_output): image oversize warning
+
+	* frontends/cli/vcdrip.c: major improvements for SVCD dumping,
+		added some short options
+
+2001-01-02  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_types.h: fixes for cygwin environment
+
+2001-01-01  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* configure.in: added -lm to link flags
+
+	* libvcd/vcd_util.c (_len2blocks): new function
+
+	* libvcd/vcd.c (vcd_obj_append_mpeg_track): reworked to use
+		_make_scantable()
+		(_finalize_vcd_iso_track): accomodated variable length 
+			SEARCH.DAT file...		
+
+2001-12-31  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (_make_scantable): new function
+
+2000-12-30  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files.c (get_search_dat_size): new function
+
+2000-12-27  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files.c (set_tracks_svd): improved playtime accuracy
+
+2000-12-25  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/: added static _rcsid symbols to all modules
+
+2000-12-23  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_mpeg.c (vcd_mpeg_get_type): added hack to detect
+		sector content by looking at the system header
+
+	* configure.in: bumped version up to 0.5.9alpha1
+
+	* libvcd/vcd.c: made app id customizable,
+		added defaults for non set params
+
+	* libvcd/vcd_iso9660.c (set_iso_pvd): made app id customizable
+
+	* frontends/cli/vcdrip.c: fixed msf conversion, removed 
+		directory source option, #ifdef'ed linux specific stuff
+
+	* libvcd/vcd.c (_write_vcd_iso_track): fixed set_lot/psd for svcd
+
+2000-12-22  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdrip.c: complete rework
+
+2000-12-20  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files.c: added vcd11 support
+
+	* frontends/cli/vcdimager.c (main): added vcd11 --type arg
+
+2000-12-19  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* make use of C99's <stdbool.h> defines
+
+2000-12-18  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* replaced almost every malloc with _vcd_malloc
+
+	* libvcd/vcd_util.c (_vcd_malloc): new function
+
+	* libvcd/vcd.c: made buf dict list into VcdList
+
+	* libvcd/vcd.c: made cust_file_t list into VcdList
+
+	* libvcd/vcd_data_structures.c: new VcdList object and methods
+	
+	* libvcd/vcd_files.c, libvcd/vcd.c, libvcd/vcd_obj.h:
+		switched from array to VcdList for track list
+	
+	* libvcd/vcd_mpeg.c (vcd_mpeg_get_info): fixed subtile buffer overun
+
+	* libvcd/vcd_data_structures.[ch]: new module 
+
+2000-12-17  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_obj.h: moved cust_file struct declaration out of VcdObj
+
+  	* libvcd/vcd.c: finished rewriting of buffer allocation
+
+	* libvcd/vcd_files.c: added buf argument to all set_ calls,
+		renamed set_psd_size to get_psd_size
+	
+	* libvcd/vcd_files.c (set_lot_vcd): fixed LOT bug, not 
+		having 0x0000 in reserved field
+
+	* libvcd/vcd_obj.h: moved some buffers/sector ptr's to new 
+		dictionary
+
+	* libvcd/vcd_salloc.c (_vcd_salloc_unset): new function
+	(_vcd_salloc_free): added new function for free'ing previously 
+		allocated sectors
+
+	* libvcd/vcd.c: begun rewrite of buffer allocation
+	
+	* libvcd/vcd.c (_dict_insert): added new functions for dictionary 
+		based buffer allocation
+
+	* frontends/cli/vcdimager.c (_vcd_log_handler): new function, 
+		implemented non verbose output
+
+	* libvcd/vcd.h (vcd_type_t): uncommented VCD11 type
+
+	* configure.in: some cleanup
+
+2000-12-16  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_mpeg.h, libvcd/vcd_stream.h, libvcd/vcd.h:
+	 	added export "C" { } block
+
+	* libvcd/vcd_mpeg.c (vcd_mpeg_get_type): zeroing of extended info
+
+2000-11-26  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_mpeg.h (struct mpeg_type_info_t): workaround for 
+		anonymous union 
+
+2000-11-25  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_mpeg.c: major reorganisation of functions -- based on
+		code contributed by mike@mlb.org
+		(vcd_mpeg_get_timecode): new convenience function
+
+	* libvcd/vcd_mpeg.c (vcd_mpeg_get_info): do norm detection by means
+		of vcd_mpeg_get_type ()
+
+	* added estimation of playtime
+	
+2000-11-24  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_mpeg.c (mpeg_type): added extended_type_info arg
+
+2000-11-23  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (vcd_obj_append_mpeg_track): cleanup, added warnings 
+		related to (S)VCD type / MPEG version
+
+	* libvcd/vcd_mpeg.c (mpeg_analyze_start_seq): replaced ugly hack by 
+		something more sensible, added mpeg version detection
+		(_bit_set_p): replaced function by macro
+
+	* libvcd/vcd_mpeg.h: added version enum to mpeg_info_t
+
+2000-11-22  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_mpeg.c (_bitvec_get_bits32): new function
+	(_bit_set_p): new function
+	(mpeg_type): improved mpeg sector type detection, based on 
+		mike@mlb.org's instructions
+
+2000-11-20  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_iso9660.c (_vcd_iso_pathname_isofy): new function
+	(_vcd_iso_pathname_valid_p): new function
+
+	* libvcd/vcd_directory.c: improved error messages
+
+	* frontends/cli/vcdimager.c: enabled poptrc parsing
+		added --add-file and --add-file-2336 feature
+
+2000-11-19  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdrip.c: removed glib dependancy
+
+	* libvcd/vcd_bytesex.h: added _FROM_ macros
+
+	* frontends/cli/vcdimager.c: removed glib dependancy
+
+2000-11-18  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (vcd_obj_add_file): fixed memset()
+
+	* libvcd/vcd_files.c (set_entries_vcd): added svcd support
+	(set_info_vcd): added svcd support
+
+	* libvcd/vcd.c (_finalize_vcd_iso_track): s/mpeg-2/mpeg2/,
+		fixed vcd sector reservation
+	(_finalize_vcd_iso_track): fixed svcd dir structure
+
+	* frontends/cli/vcdimager.c (main): new argument for selecting 
+		type of videocd
+
+2000-11-17  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_mpeg.c (mpeg_analyze_start_seq): widened range of 
+		fixup-hack
+
+	* libvcd/vcd_mpeg.h: renamed new norm tags
+
+	* libvcd/vcd.c (_write_sectors): -"-
+	
+2000-11-16  Mike Bernson  <mike@mlb.org>
+
+	* libvcd/vcd_mpeg.h: new resolutions
+
+	* libvcd/vcd_mpeg.c: added detection for SHVS resoulutions
+
+	* libvcd/vcd.c (_write_sectors): added  case MPEG_SVHS_PAL/NTSC
+
+2000-11-15  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files.c (set_psd_vcd): fixed (missing) setting of itemid 
+		(and a potential buffer overun bug)
+	(set_info_vcd): last_psd_ofs set to end of list descriptor
+
+2000-11-14  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_bytesex.c (msf_to_lba): new function
+	(lba_to_msf): new function
+
+	* libvcd/vcd.c: more svcd support added...
+
+	* libvcd/vcd_cd_sector_private.h: replaced char[3] by msf
+
+	* libvcd/vcd_files_private.h: replaced MMSSFF by 
+		msf_t (defined in vcd_types.h)
+
+	* libvcd/vcd_files.c: svcd support starting...
+	(set_tracks_svd): new function
+	(set_search_dat): new function 
+
+	* frontends/cli/vcdimager.c: just some constify
+
+	* libvcd/vcd_types.h: removed bool type
+
+	* libvcd/vcd_transfer.c: removed obsolete mknod_source* () functions
+
+	* libvcd/vcd.c (vcd_obj_add_file): implemented function
+
+2000-11-13  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_salloc.h: prefixed exported symbols _vcd
+
+2000-11-12  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_obj.h: added VcdDirectory *dir to _VcdObj
+
+	* libvcd/vcd_directory.c: introduced directory object, prefixed exported
+		symbols with 'vcd_'
+
+	* libvcd/vcd.c (_finalize_vcd_iso_track): added preliminary svcd support
+
+	* libvcd/vcd.h: added vcd_obj_add_file() prototype
+
+	* libvcd/vcd_mpeg.c: made tables static
+
+2000-11-10  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* frontends/cli/vcdimager.c: removed cdi support
+
+	* libvcd/vcd.c: reformating, removed removed vcd_obj_set_cdi_input(),
+	(_callback_wrapper): adapted to new progress_callback_t prototype
+
+	* libvcd/vcd.h: added comments, removed vcd_obj_set_cdi_input(),
+		changed progress_callback_t signature, added progress_info_t 
+		struct
+
+2000-11-09  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (_write_sectors): s/vcd_warning/vcd_warn/
+
+	* libvcd/vcd_files.c (set_info_vcd): removed obsolete comment
+
+2000-11-08  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* applied fix for program end markers in mpeg streams from
+		Andrew Stevens <Andrew.Stevens@comlab.ox.ac.uk>
+	
+	* libvcd/vcd_mpeg.h: added new mpeg_type MPEG_END
+	
+	* libvcd/vcd_mpeg.c (mpeg_type): detection for -"-
+
+	* libvcd/vcd.c (_write_sectors): added warning output for -"-
+	
+2000-09-20  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files_private.h: tiny fixups
+
+2000-09-17  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files_private.h: further improvements...
+
+2000-09-16  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_files_private.h: merging in stuff from jbj1
+	 	reindenting
+
+	* libvcd/vcd.c (vcd_obj_get_image_size): reflected changes in vcd.h
+
+	* libvcd/vcd_obj.h: redid interface to accomodate SVCD creation and future
+		extensions...
+
+2000-09-11  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.h: moved around arguments amongs output functions
+
+	* configure.in: conditionally build frontends based on available libs
+
+2000-09-10  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_obj.h: took out cue_file field
+
+	* libvcd/vcd.c (vcd_obj_end_output): moved deallocing here
+
+2000-09-09  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (_write_sectors): abort on invalid mpeg packet
+	(vcd_obj_write_image): return directly if aborted writing...
+	(_write_vcd_iso_track): added return value
+
+2000-09-08  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c (vcd_obj_remove_mpeg_track): new function
+
+2000-09-07  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd.c: really abort sometime if progess callback returns !=0
+
+	* libvcd/vcd_directory.c (directory_done): set _root = NULL when done
+
+2000-09-06  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_mpeg.c (mpeg_analyze_start_seq): added hack for finding 
+		transposed start of format info
+
+	* libvcd/vcd.c (vcd_obj_append_mpeg_track): warn instead of error if 
+		mpeg not padded to 2324 size, return trackid
+
+	* libvcd/vcd_stream_stdio.c (vcd_data_source_new_stdio): stat() 
+		file when creating source obj
+
+2000-09-05  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* libvcd/vcd_stream_stdio.c: include <sys/stat.h> instead of
+		<sys/types.h>, removed <fcntl.h>
+
+	* libvcd/vcd_directory.c, libvcd/vcd_iso9660.c, 
+	libvcd/vcd_cd_sector.c: pointer arithmetic casts...
+
+	* libvcd/vcd.c (_write_vcd_iso_track): use malloc() for dir_buf
+
+	* libvcd/vcd_files.c (set_lot_vcd): allocate lot_vcd on the heap
+
+	* libvcd/vcd_logging.c (vcd_log): de-macroized ##-using macros...
+
+	* libvcd/vcd_util.c (_strlenv), (_strfreev), (_strsplit): 
+		new functions
+
+	* libvcd/vcd_directory.c: reimplemented n-way tree
+
+	* libvcd/vcd_iso9660_private.h, libvcd/vcd_files_private.h:
+		added #pragma's for metroworks compiler
+
+	* propagated change in vcd_salloc.h to affected modules
+
+	* libvcd/vcd_salloc.h: renamed functions/exported bitmap object
+
+	* libvcd/vcd_salloc.c: reimplemented dynamic array
+
+	* started re-importing branch to CVS
+
+2000-09-04  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* PBC support added and functional
+	* progress meter abstraction done
+
+2000-09-02  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* backend/: implementing stream abstraction...
+
+2000-09-01  Herbert Valerio Riedel  <hvr@gnu.org>
+
+	* started new ChangeLog, since a complete restructuring is taking
+		place, separating the backend from the frontend (aka UI)
+

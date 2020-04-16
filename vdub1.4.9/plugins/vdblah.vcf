@@ -1,0 +1,15 @@
+VirtualDub.audio.SetSource(1);
+VirtualDub.audio.SetMode(0);
+VirtualDub.audio.SetInterleave(1,500,1,0,0);
+VirtualDub.audio.SetClipMode(1,1);
+VirtualDub.audio.SetConversion(24000,0,0,0,0);
+VirtualDub.audio.SetCompression(85,24000,2,0,7000,1,12,"AQACAAAAqAABAHEF");
+VirtualDub.video.SetDepth(24,24);
+VirtualDub.video.SetMode(3);
+VirtualDub.video.SetFrameRate(0,2);
+VirtualDub.video.SetIVTC(0,0,-1,0);
+VirtualDub.video.SetRange(0,0);
+VirtualDub.video.SetCompression(0x3334706d,0,10000,0);
+VirtualDub.video.SetCompData(120,"AwBNUwAAAAAAAAAAAMCCQFAAAAAFAAAAAAAAAFgbAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIgTAAAAAAAAAAAAAAAAAAAAAAAA");
+VirtualDub.video.filters.Clear();
+VirtualDub.subset.Delete();
